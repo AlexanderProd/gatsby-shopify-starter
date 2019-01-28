@@ -1,8 +1,10 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery, Link } from "gatsby"
+
+import style from './style.module.css'
 
 export default () => (
-  <div className="Product-wrapper">
+  <div className={style.productWrapper}>
     <StaticQuery
       query={graphql`
         {
@@ -25,10 +27,13 @@ export default () => (
         }
       `
       }
-      render={data => data.allShopifyProduct.edges.map((x, index) => (
-        <>
-          {x}
-        </>
+      render={data => data.allShopifyProduct.edges.map(x => (
+        <div className={style.product} key={x.node.id}>
+          <Link to={`/`+x.node.handle+`/`}>
+            <img src={x.node.images[0].originalSrc} alt={x.node.handle}/>
+          </Link>
+          <p>{x.node.title}</p>
+        </div>
       ))
       }
     />

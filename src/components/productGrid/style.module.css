@@ -1,0 +1,14 @@
+.product {
+  flex: 0 1 31%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 3%;
+}
+
+.productWrapper {
+  max-width: 900px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
