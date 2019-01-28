@@ -3,7 +3,7 @@
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Kyle Mathews <alexander.horl2@live.de>",
   "dependencies": {
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.20",
@@ -28,7 +28,8 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "deploy": "rm -rf public/ && gatsby build && rsync -Pav -e \"ssh -i ~/.ssh/ubuntu-ec2.pem\" public/ ubuntu@3.121.177.95:/home/ubuntu/test/"
   },
   "devDependencies": {
     "prettier": "^1.15.2"
