@@ -3,7 +3,7 @@ import { graphql, StaticQuery, Link } from "gatsby"
 
 import style from './style.module.css'
 
-export default () => (
+const ProductGrid = () => (
   <div className={style.productWrapper}>
     <StaticQuery
       query={graphql`
@@ -39,3 +39,5 @@ export default () => (
     />
   </div>
 )
+
+export default ProductGrid
