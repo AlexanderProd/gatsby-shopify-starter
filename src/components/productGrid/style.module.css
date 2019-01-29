@@ -6,8 +6,8 @@
 }
 
 .productWrapper {
-  max-width: 900px;
-  margin: 40px auto 0;
+  /* max-width: 900px;
+  margin: 40px auto 0; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
