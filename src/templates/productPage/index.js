@@ -6,9 +6,30 @@ export default ({ data }) => {
   const product = data.shopifyProduct
   return (
     <Layout>
-      <div>
-        <h1>{product.title}</h1>
-        <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}/>
+      <div
+        style={{
+          display: `grid`,
+          'grid-template-columns': `repeat(12, 1fr)`,
+          'grid-template-rows': `100% 100% 100%`,
+        }}
+      >
+        <div
+          style={{
+            'grid-column': `span 6`,
+          }}
+        >
+          {product.images.map(x => (
+            <img src={x.originalSrc} key={x.id}/>
+          ))}
+        </div>
+        <div
+          style={{
+            'grid-column': `span 6`,
+          }}
+        >
+          <h1>{product.title}</h1>
+          <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}/>
+        </div>
       </div>
     </Layout>
   )
@@ -22,11 +43,14 @@ export const query = graphql`
       handle
       productType
       descriptionHtml
-      vendor
       variants {
         id
         title
         price
+      }
+      images{
+        originalSrc
+        id
       }
     }
   }
