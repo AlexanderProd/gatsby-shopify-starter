@@ -5078,6 +5078,13 @@ gatsby-node-helpers@^0.3.0:
     lodash "^4.17.4"
     p-is-promise "^1.1.0"
 
+gatsby-plugin-layout@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.0.11.tgz#02f9a0103cbd17bdf66fd9a5ca5434d5c089ce88"
+  integrity sha512-fDg970RXm8Mu3nAr5MaTPQqVEhgaVmDyBuWVqeGtNJ+NqVPGRUB8wq/ikHt5ZbCTHXWUrBifPMlzXLs4iAC43g==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-manifest@^2.0.9:
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.12.tgz#7e25f8997ea690969eeaa010a2d111209282f2ce"
