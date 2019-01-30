@@ -29,7 +29,7 @@ const ProductGrid = () => (
       }
       render={data => data.allShopifyProduct.edges.map(x => (
         <div className={style.product} key={x.node.id}>
-          <Link to={`/`+x.node.handle+`/`}>
+          <Link to={`/product/`+x.node.handle+`/`}>
             <img src={x.node.images[0].originalSrc} alt={x.node.handle}/>
           </Link>
           <p>{x.node.title}</p>
