@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
+import StoreContext from '../context/StoreContext'
 import Header from '../components/header'
 import './layout.css'
 
@@ -17,7 +18,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <StoreContext.Provider>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -34,7 +35,7 @@ const Layout = ({ children }) => (
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
         </div>
-      </>
+      </StoreContext.Provider>
     )}
   />
 )
