@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../../components/layout"
+import Layout from "../../layouts"
 
 export default ({ data }) => {
   const product = data.shopifyProduct
   return (
-    <Layout>
+    <>
       <div
         style={{
           display: `grid`,
@@ -31,7 +31,7 @@ export default ({ data }) => {
           <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}/>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 
