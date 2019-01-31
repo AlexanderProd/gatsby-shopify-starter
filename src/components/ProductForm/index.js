@@ -7,10 +7,27 @@ class ProductForm extends Component {
   constructor(props) {
     super(props);
 
+    /* let defaultOptionValues = {};
+    this.props.product.options.forEach((selector) => {
+      defaultOptionValues[selector.name] = selector.values[0].value;
+    });
+    this.state = { selectedOptions: defaultOptionValues };
+
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this); */
   }
 
   handleOptionChange(event) {
-    
+    /* const target = event.target
+    let selectedOptions = this.state.selectedOptions;
+    selectedOptions[target.name] = target.value;
+
+    const selectedVariant = this.props.client.product.helpers.variantForOptions(this.props.product, selectedOptions)
+
+    this.setState({
+      selectedVariant: selectedVariant,
+      selectedVariantImage: selectedVariant.attrs.image
+    }); */
   }
 
   handleQuantityChange(event) {
@@ -31,6 +48,12 @@ class ProductForm extends Component {
     });
     return (
       <>
+        {<StoreContext.Consumer>
+          {({ test, client }) => {
+            console.log(client)
+            return(<p>{test}</p>)
+          }}
+        </StoreContext.Consumer>}
         <span className="Product__price">${variant.price}</span>
         {variantSelectors}
         <label className="Product__option">

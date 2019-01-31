@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import ProductForm from '../../components/ProductForm'
+
 export default ({ data }) => {
   const product = data.shopifyProduct
   return (
@@ -18,7 +20,7 @@ export default ({ data }) => {
           }}
         >
           {product.images.map(x => (
-            <img src={x.originalSrc} key={x.id}/>
+            <img src={x.originalSrc} key={x.id} alt={product.title}/>
           ))}
         </div>
         <div
@@ -28,6 +30,7 @@ export default ({ data }) => {
         >
           <h1>{product.title}</h1>
           <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}/>
+          <ProductForm product={product}/>
         </div>
       </div>
     </>
@@ -42,6 +45,11 @@ export const query = graphql`
       handle
       productType
       descriptionHtml
+      options{
+        id
+        name
+        values
+      }
       variants {
         id
         title
