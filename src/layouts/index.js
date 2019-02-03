@@ -9,7 +9,66 @@ import './layout.css'
 class Layout extends React.Component {
   state = {
     store: {
-      ...defaultStoreContext
+      ...defaultStoreContext,
+      addVariantToCart: (variantId, quantity) => {
+        if (variantId === '' || !quantity) {
+          console.error('Both a size and quantity are required.');
+          return;
+        }
+
+        this.setState(state => ({
+          store: {
+            ...state.store,
+            adding: true
+          }
+        }));
+
+        const { checkout, client } = this.state.store;
+        const checkoutId = checkout.id;
+        const lineItemsToUpdate = [
+          { variantId, quantity: parseInt(quantity, 10) }
+        ];
+
+        return client.checkout
+          .addLineItems(checkoutId, lineItemsToUpdate)
+          .then(checkout => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout,
+                adding: false
+              }
+            }));
+          });
+      },
+      removeLineItem: (client, checkoutID, lineItemID) => {
+        return client.checkout
+          .removeLineItems(checkoutID, [lineItemID])
+          .then(res => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout: res
+              }
+            }));
+          });
+      },
+      updateLineItem: (client, checkoutID, lineItemID, quantity) => {
+        const lineItemsToUpdate = [
+          { id: lineItemID, quantity: parseInt(quantity, 10) }
+        ];
+
+        return client.checkout
+          .updateLineItems(checkoutID, lineItemsToUpdate)
+          .then(res => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout: res
+              }
+            }));
+          });
+      }
     }
   }
 
