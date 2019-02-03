@@ -10,62 +10,63 @@ class ProductForm extends React.Component {
       this.props.product.variants.length === 1 ? this.props.product.variants[0].shopifyId : '',
     quantity: 1,
     errors: []
-  };
+  }
 
   handleChange = event => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (event.target.value) {
-      const errors = this.state.errors;
+      const errors = this.state.errors
 
       const errorIdx = errors.findIndex(
         error => error.field === event.target.name
-      );
+      )
 
-      errors.splice(errorIdx, 1);
+      errors.splice(errorIdx, 1)
 
       if (~errorIdx) {
-        this.setState({ errors: errors });
+        this.setState({ errors: errors })
       }
     }
 
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    console.log(event.target.name, event.target.value)
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   handleSubmit = callback => event => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const errors = [];
+    const errors = []
 
     if (this.state.quantity < 1) {
       errors.push({
         field: 'quantity',
         msg: 'Choose a <b>quantity</b> of 1 or more.'
-      });
+      })
     }
 
     if (this.state.variant === '' || this.state.variant === '.') {
       errors.push({
         field: 'variant',
         msg: 'Please select a <b>size</b>.'
-      });
+      })
     }
 
     if (errors.length) {
-      this.setState({ errors: errors });
-      return;
+      this.setState({ errors: errors })
+      return
     }
 
-    callback(this.state.variant, this.state.quantity);
-  };
+    callback(this.state.variant, this.state.quantity)
+  }
 
   render() {
     const { variants } = this.props.product
     const hasVariants = variants.length > 1
     const isOutOfStock = !hasVariants && !variants[0].availableForSale
     const variant = /* this.state.selectedVariant || */ variants[0]
-    const variantQuantity = this.state.quantity || 1
-    
+    // const variantQuantity = this.state.quantity || 1
+
     const variantSelectors = hasVariants ? this.props.product.options.map((option) => {
       return (
         <VariantSelector
@@ -73,11 +74,12 @@ class ProductForm extends React.Component {
           key={option.id.toString()}
           option={option}
         />
-      );
-    }) : null;
+      )
+    }) : null
+
     return (
       <StoreContext.Consumer>
-        {({ test, client, addVariantToCart }) => (
+        {({ addVariantToCart }) => (
           <form onSubmit={this.handleSubmit(addVariantToCart)} noValidate>
             <span className="Product__price">${variant.price}</span>
             {variantSelectors}
@@ -102,7 +104,7 @@ class ProductForm extends React.Component {
           </form>
         )}
       </StoreContext.Consumer>
-    );
+    )
   }
 }
 
@@ -133,4 +135,4 @@ ProductForm.propTypes = {
   addVariantToCart: PropTypes.func,
 }
 
-export default ProductForm;
+export default ProductForm

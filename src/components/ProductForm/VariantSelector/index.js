@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 const VariantSelector = (props) => {
-  const option = props.option
+  const { option } = props
   return (
     <>
       <p>{option.name}</p>
       <select
         className="Product__option"
-        name={option.title}
+        name={option.name}
         key={option.id}
         onChange={props.onChange}
       >
