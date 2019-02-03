@@ -12,22 +12,22 @@ class Layout extends React.Component {
       ...defaultStoreContext,
       addVariantToCart: (variantId, quantity) => {
         if (variantId === '' || !quantity) {
-          console.error('Both a size and quantity are required.');
-          return;
+          console.error('Both a size and quantity are required.')
+          return
         }
 
         this.setState(state => ({
           store: {
             ...state.store,
-            adding: true
-          }
-        }));
+            adding: true,
+          },
+        }))
 
-        const { checkout, client } = this.state.store;
-        const checkoutId = checkout.id;
+        const { checkout, client } = this.state.store
+        const checkoutId = checkout.id
         const lineItemsToUpdate = [
-          { variantId, quantity: parseInt(quantity, 10) }
-        ];
+          { variantId, quantity: parseInt(quantity, 10) },
+        ]
 
         return client.checkout
           .addLineItems(checkoutId, lineItemsToUpdate)
@@ -36,10 +36,10 @@ class Layout extends React.Component {
               store: {
                 ...state.store,
                 checkout,
-                adding: false
-              }
-            }));
-          });
+                adding: false,
+              },
+            }))
+          })
       },
       removeLineItem: (client, checkoutID, lineItemID) => {
         return client.checkout
@@ -48,15 +48,15 @@ class Layout extends React.Component {
             this.setState(state => ({
               store: {
                 ...state.store,
-                checkout: res
-              }
-            }));
-          });
+                checkout: res,
+              },
+            }))
+          })
       },
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
         const lineItemsToUpdate = [
-          { id: lineItemID, quantity: parseInt(quantity, 10) }
-        ];
+          { id: lineItemID, quantity: parseInt(quantity, 10) },
+        ]
 
         return client.checkout
           .updateLineItems(checkoutID, lineItemsToUpdate)
@@ -64,18 +64,18 @@ class Layout extends React.Component {
             this.setState(state => ({
               store: {
                 ...state.store,
-                checkout: res
-              }
-            }));
-          });
-      }
-    }
+                checkout: res,
+              },
+            }))
+          })
+      },
+    },
   }
 
   render() {
-    const { children } = this.props;
+    const { children } = this.props
 
-    return(
+    return (
       <StoreContext.Provider value={this.state.store}>
         <StaticQuery
           query={graphql`

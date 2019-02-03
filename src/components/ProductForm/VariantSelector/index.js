@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 
-const VariantSelector = (props) => {
+const VariantSelector = props => {
   const { option } = props
   return (
     <>
@@ -12,14 +12,17 @@ const VariantSelector = (props) => {
         key={option.id}
         onChange={props.onChange}
       >
-        {option.values.map((value) => {
+        {option.values.map(value => {
           return (
-            <option value={value} key={`${option.name}-${value}`}>{`${value}`}</option>
+            <option
+              value={value}
+              key={`${option.name}-${value}`}
+            >{`${value}`}</option>
           )
         })}
       </select>
     </>
-  );
+  )
 }
 
 VariantSelector.propTypes = {
@@ -28,7 +31,7 @@ VariantSelector.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     values: PropTypes.arrayOf(PropTypes.string),
-  })
+  }),
 }
 
-export default VariantSelector;
+export default VariantSelector

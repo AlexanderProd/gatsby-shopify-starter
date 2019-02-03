@@ -28,7 +28,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-      <h1 
+      <h1
         style={{
           marginLeft: `auto`,
           marginBottom: 0,

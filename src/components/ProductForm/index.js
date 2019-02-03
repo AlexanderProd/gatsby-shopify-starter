@@ -7,9 +7,11 @@ import VariantSelector from './VariantSelector'
 class ProductForm extends React.Component {
   state = {
     variant:
-      this.props.product.variants.length === 1 ? this.props.product.variants[0].shopifyId : '',
+      this.props.product.variants.length === 1
+        ? this.props.product.variants[0].shopifyId
+        : '',
     quantity: 1,
-    errors: []
+    errors: [],
   }
 
   handleChange = event => {
@@ -41,14 +43,14 @@ class ProductForm extends React.Component {
     if (this.state.quantity < 1) {
       errors.push({
         field: 'quantity',
-        msg: 'Choose a <b>quantity</b> of 1 or more.'
+        msg: 'Choose a <b>quantity</b> of 1 or more.',
       })
     }
 
     if (this.state.variant === '' || this.state.variant === '.') {
       errors.push({
         field: 'variant',
-        msg: 'Please select a <b>size</b>.'
+        msg: 'Please select a <b>size</b>.',
       })
     }
 
@@ -67,15 +69,17 @@ class ProductForm extends React.Component {
     const variant = /* this.state.selectedVariant || */ variants[0]
     // const variantQuantity = this.state.quantity || 1
 
-    const variantSelectors = hasVariants ? this.props.product.options.map((option) => {
-      return (
-        <VariantSelector
-          onChange={this.handleChange}
-          key={option.id.toString()}
-          option={option}
-        />
-      )
-    }) : null
+    const variantSelectors = hasVariants
+      ? this.props.product.options.map(option => {
+          return (
+            <VariantSelector
+              onChange={this.handleChange}
+              key={option.id.toString()}
+              option={option}
+            />
+          )
+        })
+      : null
 
     return (
       <StoreContext.Consumer>
@@ -95,7 +99,7 @@ class ProductForm extends React.Component {
             />
             <button
               type="submit"
-              className="Product__buy button" 
+              className="Product__buy button"
               disabled={isOutOfStock}
             >
               Add to Cart
@@ -113,24 +117,30 @@ ProductForm.propTypes = {
     descriptionHtml: PropTypes.string,
     handle: PropTypes.string,
     id: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string,
-      originalSrc: PropTypes.string,
-    })),
-    options: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      values: PropTypes.arrayOf(PropTypes.string),
-    })),
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        originalSrc: PropTypes.string,
+      })
+    ),
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        values: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
     productType: PropTypes.string,
     title: PropTypes.string,
-    variants: PropTypes.arrayOf(PropTypes.shape({
-      availableForSale: PropTypes.bool,
-      id: PropTypes.string,
-      price: PropTypes.string,
-      title: PropTypes.string,
-      shopifyId: PropTypes.string,
-    })),
+    variants: PropTypes.arrayOf(
+      PropTypes.shape({
+        availableForSale: PropTypes.bool,
+        id: PropTypes.string,
+        price: PropTypes.string,
+        title: PropTypes.string,
+        shopifyId: PropTypes.string,
+      })
+    ),
   }),
   addVariantToCart: PropTypes.func,
 }
