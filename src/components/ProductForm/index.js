@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import StoreContext from '../../context/StoreContext'
@@ -12,8 +12,15 @@ const ProductForm = props => {
   const { variants } = props.product
   const hasVariants = variants.length > 1
   const isOutOfStock = !hasVariants && !variants[0].availableForSale
-  // const variant = /* this.state.selectedVariant || */ variants[0]
-  // const variantQuantity = this.state.quantity || 1
+  const productVariant = context.client.product.helpers.variantForOptions(props.product, variant) || props.product.variants[0]
+
+  useEffect(() => {
+    let defaultOptionValues = {}
+    props.product.options.forEach(selector => {
+      defaultOptionValues[selector.name] = selector.values[0]
+    })
+    setVariant(defaultOptionValues)
+  }, [])
   
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
@@ -21,18 +28,15 @@ const ProductForm = props => {
   
   const handleOptionChange = event => {
     const { target } = event
-    setVariant({
-      ...variant,
+    setVariant(prevState => ({
+      ...prevState,
       [target.name]: target.value,
-    })
-    console.log(variant)
+    }))
   }
   
   const handleSubmit = () => {
-    console.log(context.client.product.helpers.variantForOptions(props.product, {
-      Color: "Brown",
-      Size: "7",
-    }))
+    console.log(productVariant)
+    console.log('variant' + JSON.stringify(variant))
   }
 
   const variantSelectors = hasVariants
@@ -49,7 +53,7 @@ const ProductForm = props => {
   
   return (
     <>
-      <span className="Product__price">${variant.price}</span>
+      <span className="Product__price">${productVariant.price}</span>
       {variantSelectors}
       <label htmlFor="quantity">Qty.</label>
       <input
