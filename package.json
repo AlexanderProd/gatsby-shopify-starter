@@ -16,8 +16,8 @@
     "gatsby-source-shopify2": "^2.0.7",
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
     "react-helmet": "^5.2.0",
     "shopify-buy": "^2.0.1"
   },
