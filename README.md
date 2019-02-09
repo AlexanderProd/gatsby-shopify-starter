@@ -53,5 +53,6 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 I'll happily merge any pull request to improve the starter. 🙂
 - [ ] Convert Layout to function component
 - [ ] Add better styling
+- [ ] Add image optimization using Gatsby sharp plugin
 - [X] Convert ProductForm to function component
 <!-- AUTO-GENERATED-CONTENT:END -->
