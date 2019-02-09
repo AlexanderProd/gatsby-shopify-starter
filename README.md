@@ -5,7 +5,7 @@
   Gatsby Shopify starter
 </h1>
 
-Kick off your next, ecommerce experience with this Gatsby starter. It is based on the default Gatsby starter to be easiliy modifiable.
+Kick off your next, ecommerce experience with this Gatsby starter. It is based on the default Gatsby starter to be easily modifiable.
 
 This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of `.env`.
 
@@ -51,6 +51,7 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 ## 📌 ToDo
 I'll happily merge any pull request to improve the starter. 🙂
-- [ ] Convert layout to function component
+- [ ] Convert Layout to function component
 - [ ] Add better styling
+- [X] Convert ProductForm to function component
 <!-- AUTO-GENERATED-CONTENT:END -->
