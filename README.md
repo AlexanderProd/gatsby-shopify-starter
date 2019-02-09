@@ -1,8 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <img alt="Gatsby" src="ressources/shopify+gatsby.png" width="60" />
-</p>
 <h1 align="center">
+  <img alt="Gatsby" src="ressources/shopify+gatsby.png" height="60" />
+  <br/>
   Gatsby's default starter
 </h1>
 
