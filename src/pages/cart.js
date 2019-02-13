@@ -5,7 +5,7 @@ import Cart from '../components/Cart'
 const SecondPage = () => (
   <>
     <h1>Cart</h1>
-    <Cart/>
+    <Cart />
   </>
 )
 

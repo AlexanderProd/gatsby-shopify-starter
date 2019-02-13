@@ -12,7 +12,9 @@ const ProductForm = props => {
   const { variants } = props.product
   const hasVariants = variants.length > 1
   const isOutOfStock = !hasVariants && !variants[0].availableForSale
-  const productVariant = context.client.product.helpers.variantForOptions(props.product, variant) || variant
+  const productVariant =
+    context.client.product.helpers.variantForOptions(props.product, variant) ||
+    variant
 
   useEffect(() => {
     let defaultOptionValues = {}
@@ -21,11 +23,11 @@ const ProductForm = props => {
     })
     setVariant(defaultOptionValues)
   }, [])
-  
+
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
   }
-  
+
   const handleOptionChange = event => {
     const { target } = event
     setVariant(prevState => ({
@@ -33,7 +35,7 @@ const ProductForm = props => {
       [target.name]: target.value,
     }))
   }
-  
+
   const handleAddToCart = () => {
     context.addVariantToCart(productVariant.shopifyId, quantity)
   }
@@ -49,7 +51,7 @@ const ProductForm = props => {
         )
       })
     : null
-  
+
   return (
     <>
       <span className="Product__price">${productVariant.price}</span>
@@ -64,11 +66,7 @@ const ProductForm = props => {
         onChange={handleQuantityChange}
         value={quantity}
       />
-      <button
-        type="submit"
-        disabled={isOutOfStock}
-        onClick={handleAddToCart}
-      >
+      <button type="submit" disabled={isOutOfStock} onClick={handleAddToCart}>
         Add to Cart
       </button>
       {isOutOfStock && <p>This Product is out of Stock!</p>}
@@ -103,11 +101,13 @@ ProductForm.propTypes = {
         price: PropTypes.string,
         title: PropTypes.string,
         shopifyId: PropTypes.string,
-        selectedOptions: PropTypes.arrayOf(PropTypes.shape({
-          name: PropTypes.string,
-          value: PropTypes.string,
-        })),
-      }),
+        selectedOptions: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string,
+            value: PropTypes.string,
+          })
+        ),
+      })
     ),
   }),
   addVariantToCart: PropTypes.func,

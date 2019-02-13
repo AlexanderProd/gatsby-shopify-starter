@@ -56,7 +56,7 @@ export const query = graphql`
         price
         availableForSale
         shopifyId
-        selectedOptions{
+        selectedOptions {
           name
           value
         }
