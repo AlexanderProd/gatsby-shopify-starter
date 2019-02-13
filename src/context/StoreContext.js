@@ -2,8 +2,8 @@ import React from 'react'
 import Client from 'shopify-buy'
 
 const client = Client.buildClient({
-  domain: `${process.env.SHOPNAME}.myshopify.com`,
-  storefrontAccessToken: process.env.ACCESSTOKEN,
+  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+  domain: `${process.env.SHOP_NAME}.myshopify.com`,
 })
 
 export const defaultStoreContext = {
@@ -15,7 +15,6 @@ export const defaultStoreContext = {
   addVariantToCart: () => {},
   removeLineItem: () => {},
   updateLineItem: () => {},
-  test: 'jooooo',
 }
 
 const StoreContext = React.createContext(defaultStoreContext)

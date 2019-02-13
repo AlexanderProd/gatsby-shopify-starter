@@ -39,7 +39,7 @@ This starter also includes credentials to a Shopify demo store so you can try it
 
 1. **Connect your own Shopify store.**
 
-    Open the `.env` file located in the root directory of your page end replace the credentials with your own. Don't forget to restart Gatsby for your store to be loaded!
+    Open both `.env` files located in the root directory of your page end replace the credentials with your own. Don't forget to restart Gatsby for your store to be loaded!
 
 ## 🎓 Learning Gatsby
 
