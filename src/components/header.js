@@ -34,7 +34,15 @@ const Header = ({ siteTitle }) => (
           marginBottom: 0,
         }}
       >
-        Cart
+        <Link
+          to="/cart"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}
+        >
+          Cart
+        </Link>
       </h1>
     </div>
   </div>
