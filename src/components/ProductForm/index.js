@@ -12,7 +12,7 @@ const ProductForm = props => {
   const { variants } = props.product
   const hasVariants = variants.length > 1
   const isOutOfStock = !hasVariants && !variants[0].availableForSale
-  const productVariant = context.client.product.helpers.variantForOptions(props.product, variant) || props.product.variants[0]
+  const productVariant = context.client.product.helpers.variantForOptions(props.product, variant) || variant
 
   useEffect(() => {
     let defaultOptionValues = {}
@@ -34,9 +34,8 @@ const ProductForm = props => {
     }))
   }
   
-  const handleSubmit = () => {
-    console.log(productVariant)
-    console.log('variant' + JSON.stringify(variant))
+  const handleAddToCart = () => {
+    context.addVariantToCart(productVariant.shopifyId, quantity)
   }
 
   const variantSelectors = hasVariants
@@ -67,9 +66,8 @@ const ProductForm = props => {
       />
       <button
         type="submit"
-        className="Product__buy button"
         disabled={isOutOfStock}
-        onClick={handleSubmit}
+        onClick={handleAddToCart}
       >
         Add to Cart
       </button>
@@ -105,10 +103,10 @@ ProductForm.propTypes = {
         price: PropTypes.string,
         title: PropTypes.string,
         shopifyId: PropTypes.string,
-        selectedOptions: PropTypes.shape({
+        selectedOptions: PropTypes.arrayOf(PropTypes.shape({
           name: PropTypes.string,
           value: PropTypes.string,
-        })
+        })),
       }),
     ),
   }),
