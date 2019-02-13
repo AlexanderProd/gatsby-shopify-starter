@@ -72,6 +72,51 @@ class Layout extends React.Component {
     },
   }
 
+  async initializeCheckout() {
+    // Check for an existing cart.
+    const isBrowser = typeof window !== 'undefined'
+    const existingCheckoutID = isBrowser
+      ? localStorage.getItem('shopify_checkout_id')
+      : null
+
+    const setCheckoutInState = checkout => {
+      if (isBrowser) {
+        localStorage.setItem('shopify_checkout_id', checkout.id)
+      }
+
+      this.setState(state => ({
+        store: {
+          ...state.store,
+          checkout,
+        },
+      }))
+    }
+
+    const createNewCheckout = () => this.state.store.client.checkout.create()
+    const fetchCheckout = id => this.state.store.client.checkout.fetch(id)
+
+    if (existingCheckoutID) {
+      try {
+        const checkout = await fetchCheckout(existingCheckoutID)
+
+        // Make sure this cart hasn’t already been purchased.
+        if (!checkout.completedAt) {
+          setCheckoutInState(checkout)
+          return
+        }
+      } catch (e) {
+        localStorage.setItem('shopify_checkout_id', null)
+      }
+    }
+
+    const newCheckout = await createNewCheckout()
+    setCheckoutInState(newCheckout)
+  }
+
+  componentDidMount() {
+    this.initializeCheckout()
+  }
+
   render() {
     const { children } = this.props
 
