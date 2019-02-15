@@ -11,10 +11,10 @@ const ProductForm = props => {
 
   const { variants } = props.product
   const hasVariants = variants.length > 1
-  const isOutOfStock = !hasVariants && !variants[0].availableForSale
   const productVariant =
     context.client.product.helpers.variantForOptions(props.product, variant) ||
     variant
+  const isOutOfStock = !productVariant.available
 
   useEffect(() => {
     let defaultOptionValues = {}
@@ -22,14 +22,15 @@ const ProductForm = props => {
       defaultOptionValues[selector.name] = selector.values[0]
     })
     setVariant(defaultOptionValues)
+    checkAvailability(props.product)
   }, [])
 
-/*   const checkAvailability = async productId => {
-    console.log(productId)
-    context.client.product.fetch(productId).then(product => {
-      console.log(product.attrs)
+  const checkAvailability = async product => {
+    console.log(product)
+    context.client.product.fetch(product).then(res => {
+      console.log(res)
     })
-  } */
+  }
  
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
@@ -86,6 +87,7 @@ ProductForm.propTypes = {
     descriptionHtml: PropTypes.string,
     handle: PropTypes.string,
     id: PropTypes.string,
+    shopifyId: PropTypes.string,
     images: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,

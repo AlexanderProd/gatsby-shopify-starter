@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import ProductForm from '../../components/ProductForm'
 
-export default ({ data }) => {
+const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
   return (
     <>
@@ -45,6 +45,7 @@ export const query = graphql`
       handle
       productType
       descriptionHtml
+      shopifyId
       options {
         id
         name
@@ -68,3 +69,5 @@ export const query = graphql`
     }
   }
 `
+
+export default ProductPage
