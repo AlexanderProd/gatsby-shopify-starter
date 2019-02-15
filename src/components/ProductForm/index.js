@@ -18,7 +18,7 @@ const ProductForm = props => {
 
   useEffect(() => {
     let defaultOptionValues = {}
-    props.product.options.forEach(selector => {
+    props.product.options.map(selector => {
       defaultOptionValues[selector.name] = selector.values[0]
     })
     setVariant(defaultOptionValues)
