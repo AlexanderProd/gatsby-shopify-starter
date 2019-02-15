@@ -18,12 +18,19 @@ const ProductForm = props => {
 
   useEffect(() => {
     let defaultOptionValues = {}
-    props.product.options.map(selector => {
+    props.product.options.forEach(selector => {
       defaultOptionValues[selector.name] = selector.values[0]
     })
     setVariant(defaultOptionValues)
   }, [])
 
+/*   const checkAvailability = async productId => {
+    console.log(productId)
+    context.client.product.fetch(productId).then(product => {
+      console.log(product.attrs)
+    })
+  } */
+ 
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
   }
