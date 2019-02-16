@@ -13,11 +13,11 @@ This starter also includes credentials to a Shopify demo store so you can try it
 
 1.  **Create a Gatsby site.**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    Use the Gatsby CLI to create a new site, specifying this starter.
 
     ```sh
     # create a new Gatsby site using this starter
-    npx gatsby new my-shopify-store https://github.com/AlexanderProd/gatsby-shopify-starter
+    gatsby new my-shopify-store https://github.com/AlexanderProd/gatsby-shopify-starter
     ```
 
 1.  **Start developing.**
