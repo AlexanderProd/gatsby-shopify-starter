@@ -1,52 +1,76 @@
+import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
+import styled from '@emotion/styled';
 
-const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+import StoreContext from '../context/StoreContext'
+
+const CartCounter = styled.span({
+  backgroundColor: `white`,
+  color: `#663399`,
+  borderRadius: `20px`,
+  padding: `0 10px`,
+  fontSize: `1.2rem`,
+  float: `right`,
+  margin: `-10px`,
+})
+
+const Header = ({ siteTitle }) => {
+  const context = useContext(StoreContext)
+
+  const { lineItems } = context.checkout
+
+  return(
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-        display: `flex`,
+        background: `rebeccapurple`,
+        marginBottom: `1.45rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-      <h1
+      <div
         style={{
-          marginLeft: `auto`,
-          marginBottom: 0,
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+          display: `flex`,
         }}
       >
-        <Link
-          to="/cart"
+        <h1 style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+        <h1
           style={{
-            color: `white`,
-            textDecoration: `none`,
+            marginLeft: `auto`,
+            marginBottom: 0,
           }}
-        >
-          Cart🛍
-        </Link>
-      </h1>
+          >
+          {lineItems.length !== 0 &&
+            <CartCounter>
+              {lineItems.length}
+            </CartCounter>
+          }
+          <Link
+            to="/cart"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            Cart🛍
+          </Link>
+        </h1>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
