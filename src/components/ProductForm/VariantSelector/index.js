@@ -5,9 +5,8 @@ const VariantSelector = props => {
   const { option } = props
   return (
     <>
-      <p>{option.name}</p>
+      <label htmlFor={option.name}>{option.name} </label>
       <select
-        className="Product__option"
         name={option.name}
         key={option.id}
         onChange={props.onChange}
@@ -21,6 +20,7 @@ const VariantSelector = props => {
           )
         })}
       </select>
+      <br/>
     </>
   )
 }
