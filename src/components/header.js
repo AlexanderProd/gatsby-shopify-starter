@@ -41,7 +41,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          Cart
+          Cart🛍
         </Link>
       </h1>
     </div>

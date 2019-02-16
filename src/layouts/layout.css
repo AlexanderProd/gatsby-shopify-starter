@@ -6,7 +6,7 @@ html {
 body {
   margin: 0;
 }
-article,
+/* article,
 aside,
 details,
 figcaption,
@@ -19,8 +19,8 @@ nav,
 section,
 summary {
   display: block;
-}
-audio,
+} */
+/* audio,
 canvas,
 progress,
 video {
@@ -87,8 +87,8 @@ img {
 }
 svg:not(:root) {
   overflow: hidden;
-}
-code,
+} */
+/* code,
 kbd,
 pre,
 samp {
@@ -145,8 +145,8 @@ fieldset {
   border: 1px solid silver;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
-}
-legend {
+} */
+/* legend {
   box-sizing: border-box;
   color: inherit;
   display: table;
@@ -181,8 +181,8 @@ textarea {
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
-}
-html {
+} */
+/* html {
   font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
@@ -206,7 +206,7 @@ body {
   -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-}
+} */
 img {
   max-width: 100%;
   margin-left: 0;
