@@ -17,7 +17,7 @@ const Cart = () => {
 
   return (
     <div>
-      {<ul>{line_items}</ul>}
+      {line_items}
       <h2>Subtotal</h2>
       <p>$ {checkout.subtotalPrice}</p>
       <br />
