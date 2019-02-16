@@ -34,7 +34,7 @@ const ProductGrid = () => (
       render={data =>
         data.allShopifyProduct.edges.map(x => (
           <Box 
-            width={[1, 1 / 2, 1 / 3, 1 / 4]} 
+            width={[1, 1 / 2, 1 / 3]} 
             px={2} 
             key={x.node.id}
           >
