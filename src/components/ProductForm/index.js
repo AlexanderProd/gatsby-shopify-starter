@@ -14,7 +14,7 @@ const ProductForm = props => {
   const productVariant =
     context.client.product.helpers.variantForOptions(props.product, variant) ||
     variant
-  const isOutOfStock = !productVariant.available
+  const isOutOfStock = !productVariant.availableForSale
 
   useEffect(() => {
     let defaultOptionValues = {}
@@ -54,9 +54,9 @@ const ProductForm = props => {
 
   return (
     <>
-      <span className="Product__price">${productVariant.price}</span>
+      <h3>${productVariant.price}</h3>
       {variantSelectors}
-      <label htmlFor="quantity">Qty.</label>
+      <label htmlFor="quantity">Quantity </label>
       <input
         type="number"
         id="quantity"
@@ -66,6 +66,7 @@ const ProductForm = props => {
         onChange={handleQuantityChange}
         value={quantity}
       />
+      <br/>
       <button type="submit" disabled={isOutOfStock} onClick={handleAddToCart}>
         Add to Cart
       </button>
