@@ -1,19 +1,24 @@
 import React from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby'
-
-import style from './style.module.css'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const ProductGrid = () => (
-  <div className={style.productWrapper}>
+  <Flex flexWrap='wrap' mx={-2}>
     <StaticQuery
       query={graphql`
         {
-          allShopifyProduct {
+          allShopifyProduct(
+            sort: {
+              fields: [createdAt]
+              order: DESC
+            }
+          ) {
             edges {
               node {
                 id
                 title
                 handle
+                createdAt
                 images {
                   id
                   originalSrc
@@ -28,16 +33,20 @@ const ProductGrid = () => (
       `}
       render={data =>
         data.allShopifyProduct.edges.map(x => (
-          <div className={style.product} key={x.node.id}>
+          <Box 
+            width={[1, 1 / 2, 1 / 3, 1 / 4]} 
+            px={2} 
+            key={x.node.id}
+          >
             <Link to={`/product/${x.node.handle}/`}>
               <img src={x.node.images[0].originalSrc} alt={x.node.handle} />
             </Link>
             <p>{x.node.title}</p>
-          </div>
+          </Box>
         ))
       }
     />
-  </div>
+  </Flex>
 )
 
 export default ProductGrid
