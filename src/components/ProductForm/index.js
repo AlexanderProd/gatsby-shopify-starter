@@ -22,15 +22,7 @@ const ProductForm = props => {
       defaultOptionValues[selector.name] = selector.values[0]
     })
     setVariant(defaultOptionValues)
-    checkAvailability(props.product)
   }, [])
-
-  const checkAvailability = async product => {
-    console.log(product)
-    context.client.product.fetch(product).then(res => {
-      console.log(res)
-    })
-  }
  
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
