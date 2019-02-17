@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
-import Header from '../components/header'
+import Header from '../components/Header'
 import './layout.css'
 
 class Layout extends React.Component {
