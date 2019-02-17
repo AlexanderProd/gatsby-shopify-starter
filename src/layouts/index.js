@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
 import Header from '../components/Header'
-import './layout.css'
+import './reset.css'
 
 class Layout extends React.Component {
   state = {
