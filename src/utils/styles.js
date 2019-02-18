@@ -1,19 +1,14 @@
-import React from 'react'
 import Image from 'gatsby-image'
+import styled from '@emotion/styled-base';
 
-export const Img = props => (
-  <Image
-    {...props}
-    style={{
-      maxWidth: `100 %`,
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-      paddingTop: 0,
-      marginBottom: `1.45rem`,
-    }}
-  />
-)
+export const Img = styled(Image)`
+  max-width: 100 %;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 1.45rem;
+`
