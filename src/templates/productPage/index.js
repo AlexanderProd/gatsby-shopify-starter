@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 import ProductForm from '../../components/ProductForm'
+import { Img } from '../../utils/styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
@@ -10,7 +11,11 @@ const ProductPage = ({ data }) => {
     <Flex flexWrap='wrap'>
       <Box pr={[null, 3]} width={[1, 1/2]}>
         {product.images.map(x => (
-          <img src={x.originalSrc} key={x.id} alt={product.title} />
+          <Img
+            fluid={x.localFile.childImageSharp.fluid}
+            key={x.id}
+            alt={product.title}
+          />
         ))}
       </Box>
       <Box width={[1, 1/2]}>
@@ -50,6 +55,13 @@ export const query = graphql`
       images {
         originalSrc
         id
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 910, maxHeight: 910) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
       }
     }
   }
