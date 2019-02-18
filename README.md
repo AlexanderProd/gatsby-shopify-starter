@@ -9,6 +9,18 @@ Kick off your next, ecommerce experience with this Gatsby starter. It is based o
 
 This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of `.env`.
 
+If you have questions feel free to message me on [Twitter](https://twitter.com/alexanderhorl) 🤙🏻
+
+## 💎 Features
+
+- Product grid
+- Product page
+- Cart
+- SEO
+- Google Analytics
+- CSS in JS with Emotion
+- Image lazy loading with Gatsby Image
+
 ## 🚀 Quick start
 
 1.  **Create a Gatsby site.**
@@ -52,8 +64,9 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## 📌 ToDo
 
 I'll happily merge any pull request to improve the starter. 🙂
-- [ ] Convert Layout to function component
-- [ ] Add better styling
-- [ ] Add image optimization using Gatsby sharp plugin
-- [X] Convert ProductForm to function component
+- [ ] Convert Layout to function component.
+- [ ] Add dynamic inventory checking to avoid re-building after every purchase. 
+- [X] Add better styling.
+- [X] Add image optimization using Gatsby sharp plugin.
+- [X] Convert ProductForm to function component.
 <!-- AUTO-GENERATED-CONTENT:END -->
