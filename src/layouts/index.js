@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
 import Header from '../components/Header'
-import './reset.css'
+import { GlobalStyle } from '../utils/styles'
 
 class Layout extends React.Component {
   state = {
@@ -122,6 +122,7 @@ class Layout extends React.Component {
 
     return (
       <StoreContext.Provider value={this.state.store}>
+        <GlobalStyle/>
         <StaticQuery
           query={graphql`
             query SiteTitleQuery {
