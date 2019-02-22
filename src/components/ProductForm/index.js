@@ -8,13 +8,12 @@ const ProductForm = props => {
   const [quantity, setQuantity] = useState(1)
   const [variant, setVariant] = useState(props.product.variants[0])
   const context = useContext(StoreContext)
-
-  const { variants } = props.product
-  const hasVariants = variants.length > 1
+  
+  const hasVariants = props.product.variants.length > 1
   const productVariant =
-    context.client.product.helpers.variantForOptions(props.product, variant) ||
-    variant
-  const isOutOfStock = !productVariant.availableForSale
+  context.client.product.helpers.variantForOptions(props.product, variant) ||
+  variant
+  const [available, setAvailable] = useState(productVariant.availableForSale)
 
   useEffect(() => {
     let defaultOptionValues = {}
@@ -23,6 +22,20 @@ const ProductForm = props => {
     })
     setVariant(defaultOptionValues)
   }, [])
+
+  useEffect(() => {
+    checkAvailability(props.product.shopifyId)
+  }, [productVariant])
+
+  const checkAvailability = productId => {
+    context.client.product.fetch(productId).then((product) => {
+      // this checks the currently selected variant for availability
+      const result = product.variants.filter(
+        variant => variant.id === productVariant.shopifyId
+      )
+      setAvailable(result[0].available)
+    })
+  }
  
   const handleQuantityChange = event => {
     setQuantity(event.target.value)
@@ -67,10 +80,10 @@ const ProductForm = props => {
         value={quantity}
       />
       <br/>
-      <button type="submit" disabled={isOutOfStock} onClick={handleAddToCart}>
+      <button type="submit" disabled={!available} onClick={handleAddToCart}>
         Add to Cart
       </button>
-      {isOutOfStock && <p>This Product is out of Stock!</p>}
+      {!available && <p>This Product is out of Stock!</p>}
     </>
   )
 }

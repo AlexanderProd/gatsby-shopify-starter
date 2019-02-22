@@ -16,10 +16,14 @@ If you have questions feel free to message me on [Twitter](https://twitter.com/a
 - Product grid
 - Product page
 - Cart
-- SEO
-- Google Analytics
-- CSS in JS with Emotion
+- Dynamic Inventory Checking
 - Image lazy loading with Gatsby Image
+- CSS in JS with Emotion
+- Google Analytics
+- SEO
+
+### Dynamic Inventory Checking
+The Shopify product invetory is beeing checked in realtime, therefore no rebuilding and redeploy is needed when a product goes out of stock. This avoids problems where products could still be available even though they're out of stock due to redeploy delay.
 
 ## 🚀 Quick start
 
