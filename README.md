@@ -13,16 +13,16 @@ If you have questions feel free to message me on [Twitter](https://twitter.com/a
 
 ## 💎 Features
 
+- Cart
 - Product grid
 - Product page
-- Cart
 - Dynamic Inventory Checking
-- Image lazy loading with Gatsby Image
+- Image optimization with Gatsby Image
 - CSS in JS with Emotion
 - Google Analytics
 - SEO
 
-### Dynamic Inventory Checking
+### 📦 Dynamic Inventory Checking
 The Shopify product invetory is beeing checked in realtime, therefore no rebuilding and redeploy is needed when a product goes out of stock. This avoids problems where products could still be available even though they're out of stock due to redeploy delay.
 
 ## 🚀 Quick start
@@ -69,7 +69,7 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 I'll happily merge any pull request to improve the starter. 🙂
 - [ ] Convert Layout to function component.
-- [ ] Add dynamic inventory checking to avoid re-building after every purchase. 
+- [X] Add dynamic inventory checking to avoid re-building after every purchase. 
 - [X] Add better styling.
 - [X] Add image optimization using Gatsby sharp plugin.
 - [X] Convert ProductForm to function component.
