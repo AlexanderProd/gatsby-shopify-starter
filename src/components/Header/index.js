@@ -73,7 +73,7 @@ const Header = ({ siteTitle }) => {
 								{lineItems.length}
 							</CartCounter>
 						}
-						Cart🛍
+						Cart 🛍
 					</H1>
 				</Box>
 			</Container>
