@@ -20,7 +20,7 @@ const ProductPage = ({ data }) => {
       </Box>
       <Box width={[1, 1/2]}>
         <h1>{product.title}</h1>
-        <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
         <ProductForm product={product} />
       </Box>
     </Flex >
