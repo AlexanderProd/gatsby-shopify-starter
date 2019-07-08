@@ -15,6 +15,12 @@ const LineItem = props => {
     />
   ) : null
 
+  const selectedOptions = line_item.variant.selectedOptions ? (
+    <>{line_item.variant.selectedOptions.map(option => {
+      return `${option.name}: ${option.value} `
+    })}</>
+  ) : null
+
   const handleRemove = () => {
     context.removeLineItem(context.client, context.checkout.id, line_item.id)
   }
@@ -37,7 +43,11 @@ const LineItem = props => {
         </p>
       </Box>
       <Box>
+        {selectedOptions}
+      </Box>
+      <Box>
         {line_item.quantity}
+        {console.log(line_item)}
       </Box>
       <Box>
         <button onClick={handleRemove}>Remove</button>
