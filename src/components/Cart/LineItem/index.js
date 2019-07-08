@@ -23,14 +23,10 @@ const LineItem = props => {
     <Flex
       py={2}
       flexWrap='wrap'
-      justifyContent='flex-start'
+      justifyContent='space-between'
       alignItems='center'
     >
-      <Box
-        style={{
-          paddingRight: '50px'
-        }}
-      >
+      <Box>
         {variantImage}
       </Box>
       <Box>
@@ -40,7 +36,10 @@ const LineItem = props => {
           {line_item.variant.title === ! 'Default Title' ? line_item.variant.title : ''}
         </p>
       </Box>
-      <Box ml='auto'>
+      <Box>
+        {line_item.quantity}
+      </Box>
+      <Box>
         <button onClick={handleRemove}>Remove</button>
       </Box>
     </Flex>
