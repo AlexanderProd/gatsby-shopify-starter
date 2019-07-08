@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
@@ -53,10 +53,24 @@ const Container = props => (
 	/>
 )
 
+const countQuantity = lineItems => {
+	let quantity = 0
+
+	lineItems.forEach(item => {
+		quantity = quantity + item.quantity
+	});
+
+	return quantity
+}
+
 const Header = ({ siteTitle }) => {
 	const context = useContext(StoreContext)
+	const { checkout } = context
+	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
 
-	const { lineItems } = context.checkout
+	useEffect(() => {
+		setQuantity(countQuantity(checkout ? checkout.lineItems : []));
+	}, [checkout]);
 
 	return(
 		<Wrapper>
@@ -68,9 +82,9 @@ const Header = ({ siteTitle }) => {
 				</Box>
 				<Box ml='auto'>
 					<H1 to='/cart'>
-						{lineItems.length !== 0 &&
+						{quantity !== 0 &&
 							<CartCounter>
-								{lineItems.length}
+								{quantity}
 							</CartCounter>
 						}
 						Cart 🛍
