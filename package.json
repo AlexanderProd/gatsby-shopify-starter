@@ -4,8 +4,8 @@
   "description": "A simple starter to build a blazing fast Shopify store quickly with Gatsby",
   "version": "0.1.0",
   "author": "Alexander Hörl <alexander.horl2@live.de>",
-  "engines" : { 
-    "node" : "=> 10.13 < 10.11" 
+  "engines": {
+    "node": "=> 10.13 < 10.11"
   },
   "dependencies": {
     "@emotion/core": "^10.0.7",
@@ -22,7 +22,7 @@
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-source-shopify2": "^2.0.7",
     "gatsby-transformer-sharp": "^2.1.8",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "3.13.1",
     "prop-types": "^15.6.2",
     "querystringify": "2.0.0",
     "react": "16.8.3",
