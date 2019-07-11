@@ -63,7 +63,7 @@ const countQuantity = lineItems => {
 	return quantity
 }
 
-const Header = ({ siteTitle }) => {
+const Navigation = ({ siteTitle }) => {
 	const context = useContext(StoreContext)
 	const { checkout } = context
 	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
@@ -95,12 +95,12 @@ const Header = ({ siteTitle }) => {
 	)
 }
 
-Header.propTypes = {
+Navigation.propTypes = {
 	siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+Navigation.defaultProps = {
 	siteTitle: ``,
 }
 
-export default Header
+export default Navigation

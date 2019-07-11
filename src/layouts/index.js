@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
-import Header from '../components/Header'
 import { GlobalStyle } from '../utils/styles'
+import Navigation from '../components/Navigation';
 
 class Layout extends React.Component {
   state = {
@@ -135,7 +135,7 @@ class Layout extends React.Component {
           `}
           render={data => (
             <>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Navigation siteTitle={data.site.siteMetadata.title} />
               <div
                 style={{
                   margin: `0 auto`,
