@@ -80,7 +80,7 @@ const ProductForm = props => {
         value={quantity}
       />
       <br/>
-      <button type="submit" disabled={!available} onClick={handleAddToCart}>
+      <button type="submit" disabled={!available || context.adding} onClick={handleAddToCart}>
         Add to Cart
       </button>
       {!available && <p>This Product is out of Stock!</p>}
