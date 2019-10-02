@@ -1,29 +1,42 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
 
 import ProductForm from '../../components/ProductForm'
-import { Img } from '../../utils/styles'
+import {
+  Img,
+  Container,
+  TwoColumnGrid,
+  GridLeft,
+  GridRight,
+} from '../../utils/styles'
+import {
+  ProductTitle,
+  ProductDescription
+} from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
   return (
-    <Flex flexWrap='wrap'>
-      <Box pr={[null, 3]} width={[1, 1/2]}>
-        {product.images.map(x => (
-          <Img
-            fluid={x.localFile.childImageSharp.fluid}
-            key={x.id}
-            alt={product.title}
+    <Container>
+      <TwoColumnGrid>
+        <GridLeft>
+          {product.images.map(x => (
+            <Img
+              fluid={x.localFile.childImageSharp.fluid}
+              key={x.id}
+              alt={product.title}
+            />
+          ))}
+        </GridLeft>
+        <GridRight>
+          <ProductTitle>{product.title}</ProductTitle>
+          <ProductForm product={product} />
+          <ProductDescription
+            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
           />
-        ))}
-      </Box>
-      <Box width={[1, 1/2]}>
-        <h1>{product.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-        <ProductForm product={product} />
-      </Box>
-    </Flex >
+        </GridRight>
+      </TwoColumnGrid>
+    </Container>
   )
 }
 

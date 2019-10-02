@@ -884,13 +884,6 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@rebass/grid@^6.0.0-7":
-  version "6.0.0-7"
-  resolved "https://registry.yarnpkg.com/@rebass/grid/-/grid-6.0.0-7.tgz#9f17453620a7d8d91d7fa49c7938a2c72478c87d"
-  integrity sha512-q77/qrgg0pvXInefbqqhhojPIpMVJDpgcx7UTMxXo4b7qGTiP4wOMiLDB6UZWcnj8Priqzz13jAOg+3lzzmGfw==
-  dependencies:
-    styled-system "^3.1.11"
-
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -10569,14 +10562,6 @@ style-loader@^0.21.0:
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
-
-styled-system@^3.1.11:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.2.1.tgz#491e1e6f88d7ee021f6f49376f12852cde8007cb"
-  integrity sha512-ag0Yp7UeVHHc3t+1uM3jvlljaZYzwqpbJ8hMrFvpaKfUd8xsB9JeQXLwMpEsz8iLx8Lz/+9j0coWFZjmw8MogQ==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    prop-types "^15.6.2"
 
 stylehacks@^4.0.0:
   version "4.0.3"
