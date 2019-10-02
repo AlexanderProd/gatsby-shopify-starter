@@ -38,20 +38,6 @@ export const Img = styled(Image)`
   margin-bottom: 1.45rem;
 `
 
-/* export const Container = props => (
-  <Flex
-    {...props}
-    mx='auto'
-    flexDirection='column'
-    px={[`1.0875rem`, null, null, 0]}
-    py='1.45rem'
-    css={{
-      margin: `0 auto`,
-      maxWidth: 960,
-    }}
-  />
-) */
-
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 960px;
