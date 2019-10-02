@@ -1,31 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
 import StoreContext from '../../context/StoreContext'
 import { 
 	Wrapper,
 	Container,
-	CartCounter 
+	CartCounter,
+	MenuLink
 } from './styles'
-
-const H1 = props => (
-	<h1
-		style={{
-			margin: 0,
-		}}
-	>
-		<Link
-			{...props}
-			style={{
-				color: `white`,
-				textDecoration: `none`,
-			}}
-		>
-			{props.children}
-		</Link>
-	</h1>
-)
 
 const countQuantity = lineItems => {
 	let quantity = 0
@@ -49,17 +31,17 @@ const Navigation = ({ siteTitle }) => {
 	return(
 		<Wrapper>
 			<Container>
-				<H1 to='/'>
+				<MenuLink to='/'>
 					{siteTitle}
-				</H1>
-				<H1 to='/cart'>
+				</MenuLink>
+				<MenuLink to='/cart'>
 					{quantity !== 0 &&
 						<CartCounter>
 							{quantity}
 						</CartCounter>
 					}
 					Cart 🛍
-				</H1>
+				</MenuLink>
 			</Container>
 		</Wrapper>
 	)
