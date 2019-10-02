@@ -59,6 +59,8 @@ The Shopify product inventory is being checked in realtime, therefore no rebuild
 
     Open both `.env` files located in the root directory of your page end replace the credentials with your own. Don't forget to restart Gatsby for your store to be loaded!
 
+    ⚠️ Make sure to use the Shopify storefront API credentials, not the one regular Shopify API!
+
 ## 🎓 Learning Gatsby
 
 Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
