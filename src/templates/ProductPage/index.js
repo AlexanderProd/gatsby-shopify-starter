@@ -23,7 +23,7 @@ const ProductPage = ({ data }) => {
       <Container>
         <TwoColumnGrid>
           <GridLeft>
-            {product.images.map(({ image }) => (
+            {product.images.map(image => (
               <Img
                 fluid={image.localFile.childImageSharp.fluid}
                 key={image.id}
