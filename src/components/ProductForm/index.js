@@ -4,27 +4,27 @@ import PropTypes from 'prop-types'
 import StoreContext from '../../context/StoreContext'
 import VariantSelector from './VariantSelector'
 
-const ProductForm = props => {
+const ProductForm = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
-  const [variant, setVariant] = useState(props.product.variants[0])
+  const [variant, setVariant] = useState(product.variants[0])
   const context = useContext(StoreContext)
   
-  const hasVariants = props.product.variants.length > 1
+  const hasVariants = product.variants.length > 1
   const productVariant =
-  context.client.product.helpers.variantForOptions(props.product, variant) ||
+  context.client.product.helpers.variantForOptions(product, variant) ||
   variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
   useEffect(() => {
     let defaultOptionValues = {}
-    props.product.options.forEach(selector => {
+    product.options.forEach(selector => {
       defaultOptionValues[selector.name] = selector.values[0]
     })
     setVariant(defaultOptionValues)
   }, [])
 
   useEffect(() => {
-    checkAvailability(props.product.shopifyId)
+    checkAvailability(product.shopifyId)
   }, [productVariant])
 
   const checkAvailability = productId => {
@@ -54,7 +54,7 @@ const ProductForm = props => {
   }
 
   const variantSelectors = hasVariants
-    ? props.product.options.map(option => {
+    ? product.options.map(option => {
         return (
           <VariantSelector
             onChange={handleOptionChange}
