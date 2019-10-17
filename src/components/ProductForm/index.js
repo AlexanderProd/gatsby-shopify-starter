@@ -65,7 +65,10 @@ const ProductForm = ({ product }) => {
   Using this in conjunction with a select input for variants 
   can cause a bug where the buy button is disabled, this 
   happens when only one variant is available and it's not the
-  first one in the dropdown list. 
+  first one in the dropdown list. I didn't feel like putting 
+  in time to fix this since its an edge case and most people
+  wouldn't want to use dropdown styled selector anyways - 
+  at least if the have a sense for good design lol.
   */
   const checkDisabled = (name, value) => {
     const match = find(variants, {
