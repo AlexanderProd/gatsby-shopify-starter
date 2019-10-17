@@ -1,6 +1,6 @@
 {
   "name": "gatsby-shopify-starter",
-  "private": true,
+  "private": false,
   "description": "A simple starter to build a blazing fast Shopify store quickly with Gatsby",
   "version": "0.1.0",
   "author": "Alexander Hörl <alexander.horl2@live.de>",
@@ -21,14 +21,14 @@
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-source-shopify": "^3.0.21",
     "gatsby-transformer-sharp": "^2.1.8",
-    "js-yaml": "3.13.1",
+    "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
-    "querystringify": "2.0.0",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "querystringify": "^2.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
-    "set-value": "2.0.1",
+    "set-value": "^2.0.1",
     "shopify-buy": "^2.7.2"
   },
   "keywords": [
