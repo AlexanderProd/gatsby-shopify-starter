@@ -1,74 +1,116 @@
 import React, { useState, useContext, useEffect } from 'react'
+import find from 'lodash/find'
+import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
 
 import StoreContext from '../../context/StoreContext'
-import VariantSelector from './VariantSelector'
 
 const ProductForm = ({ product }) => {
+  const {
+    options,
+    variants,
+    variants: [initialVariant],
+    priceRange: { minVariantPrice },
+  } = product
+  const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
-  const [variant, setVariant] = useState(product.variants[0])
-  const context = useContext(StoreContext)
+  const { 
+    client,
+    adding,
+    addVariantToCart
+  } = useContext(StoreContext)
   
-  const hasVariants = product.variants.length > 1
   const productVariant =
-  context.client.product.helpers.variantForOptions(product, variant) ||
-  variant
+    client.product.helpers.variantForOptions(product, variant) ||
+    variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
-
-  useEffect(() => {
-    let defaultOptionValues = {}
-    product.options.forEach(selector => {
-      defaultOptionValues[selector.name] = selector.values[0]
-    })
-    setVariant(defaultOptionValues)
-  }, [])
 
   useEffect(() => {
     checkAvailability(product.shopifyId)
   }, [productVariant])
 
   const checkAvailability = productId => {
-    context.client.product.fetch(productId).then((product) => {
+    client.product.fetch(productId).then(() => {
       // this checks the currently selected variant for availability
-      const result = product.variants.filter(
-        variant => variant.id === productVariant.shopifyId
+      const result = variants.filter(
+        variant => variant.shopifyId === productVariant.shopifyId
       )
-      setAvailable(result[0].available)
+      setAvailable(result[0].availableForSale)
     })
   }
  
-  const handleQuantityChange = event => {
-    setQuantity(event.target.value)
+  const handleQuantityChange = ({ target }) => {
+    setQuantity(target.value)
   }
 
-  const handleOptionChange = event => {
-    const { target } = event
-    setVariant(prevState => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
+  const handleOptionChange = (optionIndex, { target }) => {
+    const { value } = target
+    const currentOptions = [...variant.selectedOptions]
+
+    currentOptions[optionIndex] = {
+      ...currentOptions[optionIndex],
+      value,
+    }
+
+    const selectedVariant = find(variants, ({ selectedOptions }) => isEqual(currentOptions, selectedOptions))
+
+    setVariant({ ...selectedVariant })
   }
 
   const handleAddToCart = () => {
-    context.addVariantToCart(productVariant.shopifyId, quantity)
+    addVariantToCart(productVariant.shopifyId, quantity)
   }
 
-  const variantSelectors = hasVariants
-    ? product.options.map(option => {
-        return (
-          <VariantSelector
-            onChange={handleOptionChange}
-            key={option.id.toString()}
-            option={option}
-          />
-        )
-      })
-    : null
+  /* 
+  Using this in conjunction with a select input for variants 
+  can cause a bug where the buy button is disabled, this 
+  happens when only one variant is available and it's not the
+  first one in the dropdown list. 
+  */
+  const checkDisabled = (name, value) => {
+    const match = find(variants, {
+      selectedOptions: [{
+        name: name,
+        value: value
+      }]
+    })
+    if (match === undefined)
+      return true
+    if (match.availableForSale === true)
+      return false
+    return true
+  }
+  
+  const price = Intl.NumberFormat(undefined, {
+    currency: minVariantPrice.currencyCode,
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(variant.price)
 
   return (
     <>
-      <h3>${productVariant.price}</h3>
-      {variantSelectors}
+      <h3>{price}</h3>
+      {options.map(({ id, name, values }, index) => (
+        <React.Fragment key={id}>
+          <label htmlFor={name}>{name} </label>
+          <select
+            name={name}
+            key={id}
+            onChange={event => handleOptionChange(index, event)}
+          >
+            {values.map(value => (
+              <option
+                value={value}
+                key={`${name}-${value}`}
+                disabled={checkDisabled(name, value)}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
+          <br/>
+        </React.Fragment>
+      ))}
       <label htmlFor="quantity">Quantity </label>
       <input
         type="number"
@@ -80,7 +122,7 @@ const ProductForm = ({ product }) => {
         value={quantity}
       />
       <br/>
-      <button type="submit" disabled={!available || context.adding} onClick={handleAddToCart}>
+      <button type="submit" disabled={!available || adding} onClick={handleAddToCart}>
         Add to Cart
       </button>
       {!available && <p>This Product is out of Stock!</p>}

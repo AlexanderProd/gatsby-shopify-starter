@@ -70,6 +70,16 @@ export const query = graphql`
           value
         }
       }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+      }
       images {
         originalSrc
         id
