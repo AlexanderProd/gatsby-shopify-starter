@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import find from 'lodash/find'
 import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
@@ -23,19 +23,22 @@ const ProductForm = ({ product }) => {
     client.product.helpers.variantForOptions(product, variant) || variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
+  const checkAvailability = useCallback(
+    productId => {
+      client.product.fetch(productId).then(() => {
+        // this checks the currently selected variant for availability
+        const result = variants.filter(
+          variant => variant.shopifyId === productVariant.shopifyId
+        )
+        setAvailable(result[0].availableForSale)
+      })
+    },
+    [client.product, productVariant.shopifyId, variants]
+  )
+
   useEffect(() => {
     checkAvailability(product.shopifyId)
-  }, [productVariant])
-
-  const checkAvailability = productId => {
-    client.product.fetch(productId).then(() => {
-      // this checks the currently selected variant for availability
-      const result = variants.filter(
-        variant => variant.shopifyId === productVariant.shopifyId
-      )
-      setAvailable(result[0].availableForSale)
-    })
-  }
+  }, [productVariant, checkAvailability, product.shopifyId])
 
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
