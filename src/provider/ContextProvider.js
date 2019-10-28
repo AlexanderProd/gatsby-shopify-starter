@@ -19,45 +19,44 @@ const ContextProvider = ({ children }) => {
 
   const [store, updateStore] = useState(initialStoreState)
 
-  const initializeCheckout = async () => {
-    // Check for an existing cart.
-    const isBrowser = typeof window !== 'undefined'
-    const existingCheckoutID = isBrowser
-      ? localStorage.getItem('shopify_checkout_id')
-      : null
-
-    const setCheckoutInState = checkout => {
-      if (isBrowser) {
-        localStorage.setItem('shopify_checkout_id', checkout.id)
-      }
-
-      updateStore({
-        ...store,
-        checkout,
-      })
-    }
-
-    const createNewCheckout = () => store.client.checkout.create()
-    const fetchCheckout = id => store.client.checkout.fetch(id)
-
-    if (existingCheckoutID) {
-      try {
-        const checkout = await fetchCheckout(existingCheckoutID)
-        // Make sure this cart hasn’t already been purchased.
-        if (!checkout.completedAt) {
-          setCheckoutInState(checkout)
-          return
-        }
-      } catch (e) {
-        localStorage.setItem('shopify_checkout_id', null)
-      }
-    }
-
-    const newCheckout = await createNewCheckout()
-    setCheckoutInState(newCheckout)
-  }
-
   useEffect(() => {
+    const initializeCheckout = async () => {
+      // Check for an existing cart.
+      const isBrowser = typeof window !== 'undefined'
+      const existingCheckoutID = isBrowser
+        ? localStorage.getItem('shopify_checkout_id')
+        : null
+
+      const setCheckoutInState = checkout => {
+        if (isBrowser) {
+          localStorage.setItem('shopify_checkout_id', checkout.id)
+        }
+
+        updateStore(prevState => {
+          return { ...prevState, checkout }
+        })
+      }
+
+      const createNewCheckout = () => store.client.checkout.create()
+      const fetchCheckout = id => store.client.checkout.fetch(id)
+
+      if (existingCheckoutID) {
+        try {
+          const checkout = await fetchCheckout(existingCheckoutID)
+          // Make sure this cart hasn’t already been purchased.
+          if (!checkout.completedAt) {
+            setCheckoutInState(checkout)
+            return
+          }
+        } catch (e) {
+          localStorage.setItem('shopify_checkout_id', null)
+        }
+      }
+
+      const newCheckout = await createNewCheckout()
+      setCheckoutInState(newCheckout)
+    }
+
     initializeCheckout()
   }, [])
 
@@ -71,9 +70,8 @@ const ContextProvider = ({ children }) => {
             return
           }
 
-          updateStore({
-            ...store,
-            adding: true,
+          updateStore(prevState => {
+            return { ...prevState, adding: true }
           })
 
           const { checkout, client } = store
@@ -86,10 +84,8 @@ const ContextProvider = ({ children }) => {
           return client.checkout
             .addLineItems(checkoutId, lineItemsToUpdate)
             .then(checkout => {
-              updateStore({
-                ...store,
-                checkout,
-                adding: false,
+              updateStore(prevState => {
+                return { ...prevState, checkout, adding: false }
               })
             })
         },
@@ -97,9 +93,8 @@ const ContextProvider = ({ children }) => {
           return client.checkout
             .removeLineItems(checkoutID, [lineItemID])
             .then(res => {
-              updateStore({
-                ...store,
-                checkout: res,
+              updateStore(prevState => {
+                return { ...prevState, checkout: res }
               })
             })
         },
@@ -111,9 +106,8 @@ const ContextProvider = ({ children }) => {
           return client.checkout
             .updateLineItems(checkoutID, lineItemsToUpdate)
             .then(res => {
-              updateStore({
-                ...store,
-                checkout: res,
+              updateStore(prevState => {
+                return { ...prevState, checkout: res }
               })
             })
         },
