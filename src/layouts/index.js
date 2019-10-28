@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
-import StoreContext, { defaultStoreContext } from '../context/StoreContext'
-import { GlobalStyle } from '../utils/styles'
-import Navigation from '../components/Navigation'
+import StoreContext, { defaultStoreContext } from '~/context/StoreContext'
+import { GlobalStyle } from '~/utils/styles'
+import Navigation from '~/components/Navigation'
 
 const Wrapper = styled.div`
   margin: 0 auto;

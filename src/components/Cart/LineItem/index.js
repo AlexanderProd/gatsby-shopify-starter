@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import StoreContext from '../../../context/StoreContext'
+import StoreContext from '~/context/StoreContext'
 import { Wrapper } from './styles'
 
 const LineItem = props => {

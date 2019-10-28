@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import StoreContext from '../../context/StoreContext'
+import StoreContext from '~/context/StoreContext'
 import { 
 	Wrapper,
 	Container,
