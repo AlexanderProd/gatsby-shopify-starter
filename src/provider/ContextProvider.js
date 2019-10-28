@@ -58,7 +58,7 @@ const ContextProvider = ({ children }) => {
     }
 
     initializeCheckout()
-  }, [])
+  }, [store.client.checkout])
 
   return (
     <Context.Provider
