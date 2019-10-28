@@ -75,7 +75,7 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## 📌 ToDo
 
 I'll happily merge any pull request to improve the starter. 🙂
-- [ ] Convert Layout to function component.
+- [X] Convert Layout to function component.
 - [X] Add dynamic inventory checking to avoid re-building after every purchase. 
 - [X] Add better styling.
 - [X] Add image optimization using Gatsby sharp plugin.
