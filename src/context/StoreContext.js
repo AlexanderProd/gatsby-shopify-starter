@@ -1,22 +1,5 @@
-import React from 'react'
-import Client from 'shopify-buy'
+import React from 'react';
 
-const client = Client.buildClient({
-  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-  domain: `${process.env.SHOP_NAME}.myshopify.com`,
-})
+const StoreContext = React.createContext();
 
-export const defaultStoreContext = {
-  client,
-  adding: false,
-  checkout: { lineItems: [] },
-  products: [],
-  shop: {},
-  addVariantToCart: () => {},
-  removeLineItem: () => {},
-  updateLineItem: () => {},
-}
-
-const StoreContext = React.createContext(defaultStoreContext)
-
-export default StoreContext
+export default StoreContext;

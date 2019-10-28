@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
-import StoreContext from '../../context/StoreContext'
+import StoreContext from '~/context/StoreContext'
 import {
   Grid,
   Product,
   Title,
   PriceTag
 } from './styles'
-import { Img } from '../../utils/styles'
+import { Img } from '~/utils/styles'
 
 const ProductGrid = () => {
-  const { checkout } = useContext(StoreContext)
+  const { store: {checkout} } = useContext(StoreContext)
   const { allShopifyProduct } = useStaticQuery(
     graphql`
       query {

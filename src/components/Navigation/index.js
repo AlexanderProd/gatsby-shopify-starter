@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import StoreContext from '../../context/StoreContext'
+import StoreContext from '~/context/StoreContext'
 import { 
 	Wrapper,
 	Container,
@@ -20,8 +20,7 @@ const countQuantity = lineItems => {
 }
 
 const Navigation = ({ siteTitle }) => {
-	const context = useContext(StoreContext)
-	const { checkout } = context
+	const { store: {checkout} } = useContext(StoreContext)
 	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
 
 	useEffect(() => {

@@ -1,15 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import SEO from '../../components/seo'
-import ProductForm from '../../components/ProductForm'
+import SEO from '~/components/seo'
+import ProductForm from '~/components/ProductForm'
 import {
   Img,
   Container,
   TwoColumnGrid,
   GridLeft,
   GridRight,
-} from '../../utils/styles'
+} from '~/utils/styles'
 import {
   ProductTitle,
   ProductDescription
