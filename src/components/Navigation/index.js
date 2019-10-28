@@ -20,8 +20,7 @@ const countQuantity = lineItems => {
 }
 
 const Navigation = ({ siteTitle }) => {
-	const context = useContext(StoreContext)
-	const { checkout } = context
+	const { store: {checkout} } = useContext(StoreContext)
 	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
 
 	useEffect(() => {

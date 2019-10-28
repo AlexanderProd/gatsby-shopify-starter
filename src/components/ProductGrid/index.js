@@ -11,7 +11,7 @@ import {
 import { Img } from '~/utils/styles'
 
 const ProductGrid = () => {
-  const { checkout } = useContext(StoreContext)
+  const { store: {checkout} } = useContext(StoreContext)
   const { allShopifyProduct } = useStaticQuery(
     graphql`
       query {

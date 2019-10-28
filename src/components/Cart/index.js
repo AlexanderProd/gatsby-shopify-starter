@@ -4,8 +4,9 @@ import StoreContext from '~/context/StoreContext'
 import LineItem from './LineItem'
 
 const Cart = () => {
-  const context = useContext(StoreContext)
-  const { checkout } = context
+  const {
+    store: { checkout },
+  } = useContext(StoreContext)
 
   const handleCheckout = () => {
     window.open(checkout.webUrl)

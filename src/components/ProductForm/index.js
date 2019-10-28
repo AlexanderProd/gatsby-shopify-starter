@@ -14,15 +14,13 @@ const ProductForm = ({ product }) => {
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
-  const { 
-    client,
-    adding,
-    addVariantToCart
+  const {
+    addVariantToCart,
+    store: { client, adding },
   } = useContext(StoreContext)
-  
+
   const productVariant =
-    client.product.helpers.variantForOptions(product, variant) ||
-    variant
+    client.product.helpers.variantForOptions(product, variant) || variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
   useEffect(() => {
@@ -38,7 +36,7 @@ const ProductForm = ({ product }) => {
       setAvailable(result[0].availableForSale)
     })
   }
- 
+
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
   }
@@ -52,7 +50,9 @@ const ProductForm = ({ product }) => {
       value,
     }
 
-    const selectedVariant = find(variants, ({ selectedOptions }) => isEqual(currentOptions, selectedOptions))
+    const selectedVariant = find(variants, ({ selectedOptions }) =>
+      isEqual(currentOptions, selectedOptions)
+    )
 
     setVariant({ ...selectedVariant })
   }
@@ -72,18 +72,18 @@ const ProductForm = ({ product }) => {
   */
   const checkDisabled = (name, value) => {
     const match = find(variants, {
-      selectedOptions: [{
-        name: name,
-        value: value
-      }]
+      selectedOptions: [
+        {
+          name: name,
+          value: value,
+        },
+      ],
     })
-    if (match === undefined)
-      return true
-    if (match.availableForSale === true)
-      return false
+    if (match === undefined) return true
+    if (match.availableForSale === true) return false
     return true
   }
-  
+
   const price = Intl.NumberFormat(undefined, {
     currency: minVariantPrice.currencyCode,
     minimumFractionDigits: 2,
@@ -111,7 +111,7 @@ const ProductForm = ({ product }) => {
               </option>
             ))}
           </select>
-          <br/>
+          <br />
         </React.Fragment>
       ))}
       <label htmlFor="quantity">Quantity </label>
@@ -124,8 +124,12 @@ const ProductForm = ({ product }) => {
         onChange={handleQuantityChange}
         value={quantity}
       />
-      <br/>
-      <button type="submit" disabled={!available || adding} onClick={handleAddToCart}>
+      <br />
+      <button
+        type="submit"
+        disabled={!available || adding}
+        onClick={handleAddToCart}
+      >
         Add to Cart
       </button>
       {!available && <p>This Product is out of Stock!</p>}
