@@ -24,8 +24,8 @@ const Navigation = ({ siteTitle }) => {
 	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
 
 	useEffect(() => {
-		setQuantity(countQuantity(checkout ? checkout.lineItems : []));
-	}, [checkout]);
+		setQuantity(countQuantity(checkout ? checkout.lineItems : []))
+	}, [checkout])
 
 	return(
 		<Wrapper>

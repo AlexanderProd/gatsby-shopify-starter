@@ -52,7 +52,7 @@ const ProductGrid = () => {
     currency: checkout.currencyCode ? checkout.currencyCode : 'EUR',
     minimumFractionDigits: 2,
     style: 'currency',
-  }).format(parseFloat(price ? price : 0));
+  }).format(parseFloat(price ? price : 0))
 
   return (
     <Grid>
