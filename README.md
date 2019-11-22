@@ -13,6 +13,8 @@ This starter also includes credentials to a Shopify demo store so you can try it
 
 If you have questions feel free to message me on [Twitter](https://twitter.com/alexanderhorl) 🤙🏻
 
+Checkout [nureineburg.de](https://nureineburg.de) for a real public shop built with this starter, the code is also [public](https://github.com/AlexanderProd/gatsby-shopify-starter/).  
+
 ## 💎 Features
 
 - Cart
