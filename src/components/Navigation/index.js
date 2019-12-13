@@ -1,31 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import reduce from 'lodash/reduce'
 import PropTypes from 'prop-types'
 
 import StoreContext from '~/context/StoreContext'
-import { 
-	Wrapper,
+import {
+	CartCounter, 
 	Container,
-	CartCounter,
-	MenuLink
+	MenuLink,
+	Wrapper
 } from './styles'
 
-const countQuantity = lineItems => {
-	let quantity = 0
-
-	lineItems.forEach(item => {
-		quantity = quantity + item.quantity
-	});
-
-	return quantity
+const useQuantity = () => {
+	const { store: {checkout} } = useContext(StoreContext)
+	const items = checkout ? checkout.lineItems : []
+	const total = reduce(items, (acc, item) => acc + item.quantity, 0)
+	return [total !== 0, total]
 }
 
 const Navigation = ({ siteTitle }) => {
-	const { store: {checkout} } = useContext(StoreContext)
-	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
-
-	useEffect(() => {
-		setQuantity(countQuantity(checkout ? checkout.lineItems : []))
-	}, [checkout])
+  const [hasItems, quantity] = useQuantity()
 
 	return(
 		<Wrapper>
@@ -34,7 +27,7 @@ const Navigation = ({ siteTitle }) => {
 					{siteTitle}
 				</MenuLink>
 				<MenuLink to='/cart'>
-					{quantity !== 0 &&
+					{hasItems &&
 						<CartCounter>
 							{quantity}
 						</CartCounter>
