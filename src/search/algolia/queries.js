@@ -16,13 +16,6 @@ module.exports = [
               images {
                 id
                 originalSrc
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 910) {
-                      base64
-                    }
-                  }
-                }
               }
               variants {
                 id
@@ -56,6 +49,13 @@ module.exports = [
         }
       }
     `,
-    transformer: ({ data }) => data.products.edges.map(({ node }) => node),
+    transformer: ({ data }) => {
+      return data.products.edges.map(({ node }) => {
+        return {
+          ...node,
+          images: [node.images[0]],
+        }
+      })
+    },
   },
 ]

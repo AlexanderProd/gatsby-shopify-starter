@@ -26,6 +26,9 @@ const Navigation = ({ siteTitle }) => {
 				<MenuLink to='/'>
 					{siteTitle}
 				</MenuLink>
+				<MenuLink to='/search'>
+					Search
+				</MenuLink>
 				<MenuLink to='/cart'>
 					{hasItems &&
 						<CartCounter>

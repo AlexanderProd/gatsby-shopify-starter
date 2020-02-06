@@ -1,5 +1,5 @@
 const path = require('path')
-const queriesForSearch = require('./queriesForSearch')
+const queriesForSearch = require('./src/search/algolia/queries')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
