@@ -12,6 +12,7 @@
     "@emotion/styled": "^10.0.22",
     "gatsby": "^2.17.4",
     "gatsby-image": "^2.2.29",
+    "gatsby-plugin-algolia": "^0.5.0",
     "gatsby-plugin-google-analytics": "^2.0.13",
     "gatsby-plugin-layout": "^1.0.11",
     "gatsby-plugin-manifest": "^2.2.23",
