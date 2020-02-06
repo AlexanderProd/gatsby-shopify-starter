@@ -26,9 +26,9 @@ const Navigation = ({ siteTitle }) => {
 				<MenuLink to='/'>
 					{siteTitle}
 				</MenuLink>
-				<MenuLink to='/search'>
+				{process.env.GATSBY_ALGOLIA_APP_ID && <MenuLink to='/search'>
 					Search
-				</MenuLink>
+				</MenuLink>}
 				<MenuLink to='/cart'>
 					{hasItems &&
 						<CartCounter>

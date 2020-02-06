@@ -17,7 +17,6 @@ const searchClient = algoliasearch(
 )
 
 const Hit = ({ hit }) => {
-  console.log({ hit })
   return (
     <article>
       <h1>
