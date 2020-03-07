@@ -25,12 +25,14 @@ const ProductForm = ({ product }) => {
 
   const checkAvailability = useCallback(
     productId => {
-      client.product.fetch(productId).then(() => {
+      client.product.fetch(productId).then(fetchedProduct => {
         // this checks the currently selected variant for availability
-        const result = variants.filter(
-          variant => variant.shopifyId === productVariant.shopifyId
+        const result = fetchedProduct.variants.filter(
+          variant => variant.id === productVariant.shopifyId
         )
-        setAvailable(result[0].availableForSale)
+        if (result.length > 0) {
+          setAvailable(result[0].available)
+        }
       })
     },
     [client.product, productVariant.shopifyId, variants]
