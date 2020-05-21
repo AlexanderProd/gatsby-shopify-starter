@@ -6,20 +6,19 @@ import LineItem from './LineItem'
 const Cart = () => {
   const {
     store: { checkout },
-    
   } = useContext(StoreContext)
 
   const handleCheckout = () => {
     window.open(checkout.webUrl)
   }
 
-  const line_items = checkout.lineItems.map(line_item => {
-    return <LineItem key={line_item.id.toString()} line_item={line_item} />
-  })
+  const lineItems = checkout.lineItems.map(item => (
+    <LineItem key={item.id.toString()} item={item} />
+  ))
 
   return (
     <div>
-      {line_items}
+      {lineItems}
       <h2>Subtotal</h2>
       <p>$ {checkout.subtotalPrice}</p>
       <br />
@@ -29,7 +28,12 @@ const Cart = () => {
       <h2>Total</h2>
       <p>$ {checkout.totalPrice}</p>
       <br />
-      <button onClick={handleCheckout} disabled={checkout.lineItems.length === 0}>Check out</button>
+      <button
+        onClick={handleCheckout}
+        disabled={checkout.lineItems.length === 0}
+      >
+        Check out
+      </button>
     </div>
   )
 }

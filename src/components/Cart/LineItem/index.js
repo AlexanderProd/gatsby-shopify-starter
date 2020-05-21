@@ -1,45 +1,47 @@
 import React, { useContext } from 'react'
+import { Link } from 'gatsby'
 
 import StoreContext from '~/context/StoreContext'
 import { Wrapper } from './styles'
 
 const LineItem = props => {
-  const { line_item } = props
+  const { item } = props
   const {
     removeLineItem,
     store: { client, checkout },
   } = useContext(StoreContext)
 
-  const variantImage = line_item.variant.image ? (
+  const variantImage = item.variant.image ? (
     <img
-      src={line_item.variant.image.src}
-      alt={`${line_item.title} product shot`}
+      src={item.variant.image.src}
+      alt={`${item.title} product shot`}
       height="60px"
     />
   ) : null
 
-  const selectedOptions = line_item.variant.selectedOptions
-    ? line_item.variant.selectedOptions.map(
+  const selectedOptions = item.variant.selectedOptions
+    ? item.variant.selectedOptions.map(
         option => `${option.name}: ${option.value} `
       )
     : null
 
   const handleRemove = () => {
-    removeLineItem(client, checkout.id, line_item.id)
+    removeLineItem(client, checkout.id, item.id)
   }
 
   return (
     <Wrapper>
-      {variantImage}
+      {console.log(item)}
+      <Link to={`/product/${item.variant.product.handle}/`}>
+        {variantImage}
+      </Link>
       <p>
-        {line_item.title}
+        {item.title}
         {`  `}
-        {line_item.variant.title === !'Default Title'
-          ? line_item.variant.title
-          : ''}
+        {item.variant.title === !'Default Title' ? item.variant.title : ''}
       </p>
       {selectedOptions}
-      {line_item.quantity}
+      {item.quantity}
       <button onClick={handleRemove}>Remove</button>
     </Wrapper>
   )
