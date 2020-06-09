@@ -18,6 +18,7 @@ const ContextProvider = ({ children }) => {
   }
 
   const [store, updateStore] = useState(initialStoreState)
+  let isRemoved = false
 
   useEffect(() => {
     const initializeCheckout = async () => {
@@ -44,7 +45,7 @@ const ContextProvider = ({ children }) => {
         try {
           const checkout = await fetchCheckout(existingCheckoutID)
           // Make sure this cart hasn’t already been purchased.
-          if (!checkout.completedAt) {
+          if (!isRemoved && !checkout.completedAt) {
             setCheckoutInState(checkout)
             return
           }
@@ -54,11 +55,15 @@ const ContextProvider = ({ children }) => {
       }
 
       const newCheckout = await createNewCheckout()
-      setCheckoutInState(newCheckout)
+      if (!isRemoved) {
+        setCheckoutInState(newCheckout)
+      }
     }
 
     initializeCheckout()
   }, [store.client.checkout])
+  
+  useEffect(() => () => { isRemoved = true; }, [])
 
   return (
     <Context.Provider
