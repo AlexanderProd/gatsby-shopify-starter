@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useAsync } from 'react-async-hook'
 import Client from 'shopify-buy'
 
 import Context from '~/context/StoreContext'
@@ -18,52 +19,45 @@ const ContextProvider = ({ children }) => {
   }
 
   const [store, updateStore] = useState(initialStoreState)
-  let isRemoved = false
 
-  useEffect(() => {
-    const initializeCheckout = async () => {
-      // Check for an existing cart.
-      const isBrowser = typeof window !== 'undefined'
-      const existingCheckoutID = isBrowser
-        ? localStorage.getItem('shopify_checkout_id')
-        : null
+  const initializeCheckout = async () => {
+    // Check for an existing cart.
+    const isBrowser = typeof window !== 'undefined'
+    const existingCheckoutID = isBrowser
+      ? localStorage.getItem('shopify_checkout_id')
+      : null
 
-      const setCheckoutInState = checkout => {
-        if (isBrowser) {
-          localStorage.setItem('shopify_checkout_id', checkout.id)
-        }
-
-        updateStore(prevState => {
-          return { ...prevState, checkout }
-        })
+    const setCheckoutInState = checkout => {
+      if (isBrowser) {
+        localStorage.setItem('shopify_checkout_id', checkout.id)
       }
 
-      const createNewCheckout = () => store.client.checkout.create()
-      const fetchCheckout = id => store.client.checkout.fetch(id)
+      updateStore(prevState => {
+        return { ...prevState, checkout }
+      })
+    }
 
-      if (existingCheckoutID) {
-        try {
-          const checkout = await fetchCheckout(existingCheckoutID)
-          // Make sure this cart hasn’t already been purchased.
-          if (!isRemoved && !checkout.completedAt) {
-            setCheckoutInState(checkout)
-            return
-          }
-        } catch (e) {
-          localStorage.setItem('shopify_checkout_id', null)
+    const createNewCheckout = () => store.client.checkout.create()
+    const fetchCheckout = id => store.client.checkout.fetch(id)
+
+    if (existingCheckoutID) {
+      try {
+        const checkout = await fetchCheckout(existingCheckoutID)
+        // Make sure this cart hasn’t already been purchased.
+        if (!checkout.completedAt) {
+          setCheckoutInState(checkout)
+          return
         }
-      }
-
-      const newCheckout = await createNewCheckout()
-      if (!isRemoved) {
-        setCheckoutInState(newCheckout)
+      } catch (e) {
+        localStorage.setItem('shopify_checkout_id', null)
       }
     }
 
-    initializeCheckout()
-  }, [store.client.checkout])
+    const newCheckout = await createNewCheckout()
+    setCheckoutInState(newCheckout)
+  }
   
-  useEffect(() => () => { isRemoved = true; }, [])
+  useAsync(initializeCheckout, [store.client.checkout])
 
   return (
     <Context.Provider
