@@ -1,6 +1,11 @@
 The MIT License (MIT)
 
+Copyright (c) 2019 Alexander Hörl
 Copyright (c) 2015 gatsbyjs
+
+Copyright for portions of gatsby-shopify-starter are held by gatsbyjs, 2015 as 
+part of project gatsby-starter-default. 
+All other copyright for project gatsby-shopify-starter are held by Alexander Hörl, 2019.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
