@@ -23,7 +23,7 @@
     "gatsby-source-shopify": "^3.0.24",
     "gatsby-transformer-sharp": "^2.3.0",
     "js-yaml": "^3.13.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "querystringify": "^2.0.0",
     "react": "^16.11.0",
