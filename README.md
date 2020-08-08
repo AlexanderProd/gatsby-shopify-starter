@@ -5,7 +5,7 @@
   Gatsby Shopify starter
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d374a159-9ee3-4b02-91a3-ee3053990fcb/deploy-status)](https://app.netlify.com/sites/gatsby-shopify-starter/deploys)
+[![JamStackBox Status](https://jamstackbox.alexanderhoerl.de/badge/gatsby-shopify-starter)](https://github.com/AlexanderProd/jam-stack-box)
 
 Kick off your next eCommerce experience with this Gatsby starter. It is based on the default Gatsby starter to be easily modifiable. [Demo](https://gatsby-shopify-starter.netlify.com)
 
