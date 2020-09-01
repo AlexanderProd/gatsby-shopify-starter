@@ -23,8 +23,8 @@ export const MenuLink = styled(Link)`
   font-size: 2rem;
   font-weight: bold;
 
-  @media (max-width: ${breakpoints.s}px){
-    font-size: 1.4rem
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 1.4rem;
   }
 `
 
@@ -38,10 +38,3 @@ export const CartCounter = styled.span`
   margin: -10px;
   z-index: 20;
 `
-
-    
-     
-        
-          
-            
-              
