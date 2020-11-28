@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import styled from '@emotion/styled'
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
 
 export const breakpoints = {
   s: 576,
