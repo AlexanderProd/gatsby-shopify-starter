@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Alexander Hörl <alexander.horl2@live.de>",
   "engines": {
-    "node": "=> 10.13 < 10.11"
+    "node": "=> 10.13 < 14.9"
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
