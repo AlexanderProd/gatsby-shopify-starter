@@ -1,0 +1,62 @@
+{
+  "name": "gatsby-shopify-starter",
+  "private": false,
+  "description": "A simple starter to build a blazing fast Shopify store quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Alexander Hörl <alexander.horl2@live.de>",
+  "engines": {
+    "node": "=> 10.13 < 14.9"
+  },
+  "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "gatsby": "^2.17.4",
+    "gatsby-image": "^2.6.0",
+    "gatsby-plugin-google-analytics": "^2.0.13",
+    "gatsby-plugin-layout": "^1.0.11",
+    "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-offline": "^3.0.16",
+    "gatsby-plugin-react-helmet": "^3.1.13",
+    "gatsby-plugin-root-import": "^2.0.5",
+    "gatsby-plugin-sharp": "^2.9.1",
+    "gatsby-source-filesystem": "^2.1.33",
+    "gatsby-source-shopify": "^3.5.1",
+    "gatsby-transformer-sharp": "^2.7.0",
+    "isomorphic-fetch": "^3.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.19",
+    "prop-types": "^15.7.2",
+    "querystringify": "^2.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "set-value": "^3.0.2",
+    "shopify-buy": "^2.11.0"
+  },
+  "keywords": [
+    "gatsby",
+    "shopify",
+    "ecommerce",
+    "store",
+    "shop"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "start": "npm run dev",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
