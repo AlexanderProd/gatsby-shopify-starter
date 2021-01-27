@@ -23,7 +23,7 @@ const Navigation = ({ siteTitle }) => {
         <MenuLink to="/">{siteTitle}</MenuLink>
         <MenuLink to="/cart">
           {hasItems && <CartCounter>{quantity}</CartCounter>}
-          Cart 🛍
+          Cart
         </MenuLink>
       </Container>
     </Wrapper>

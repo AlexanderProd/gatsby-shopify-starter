@@ -5,13 +5,13 @@
   "version": "0.0.1",
   "author": "Kyle Richey <alexander.horl2@live.de>",
   "engines": {
-    "node": "14.15.4"
+    "node": "14.9"
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
-    "gatsby": "^2.17.4",
+    "gatsby": "^2.31.1",
     "gatsby-image": "^2.6.0",
     "gatsby-plugin-google-analytics": "^2.0.13",
     "gatsby-plugin-layout": "^1.0.11",
