@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-shopify-starter",
-  "private": false,
-  "description": "A simple starter to build a blazing fast Shopify store quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Alexander Hörl <alexander.horl2@live.de>",
+  "name": "cookie-daughters",
+  "private": true,
+  "description": "Cookie Daughters Website",
+  "version": "0.0.1",
+  "author": "Kyle Richey <alexander.horl2@live.de>",
   "engines": {
-    "node": "=> 10.13 < 14.9"
+    "node": "14.15.4"
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
@@ -54,9 +54,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/krichey15/cookiedaughters.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/krichey15/cookiedaughters/issues"
   }
 }
