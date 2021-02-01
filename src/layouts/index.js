@@ -34,9 +34,9 @@ const Layout = ({ children }) => {
             <Wrapper>
               {children}
               <footer>
-                © {new Date().getFullYear()}, Built with
+                © {new Date().getFullYear()} Cookie Daughters, Built by
                 {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
+                <a href="https://www.kyle-richey.com">Kyle Richey</a>
               </footer>
             </Wrapper>
           </>
