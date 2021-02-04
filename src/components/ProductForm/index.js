@@ -101,6 +101,7 @@ const ProductForm = ({ product }) => {
       {options.map(({ id, name, values }, index) => (
         <React.Fragment key={id}>
           <label htmlFor={name}>{name} </label>
+          <br />
           <select
             name={name}
             key={id}
@@ -117,9 +118,11 @@ const ProductForm = ({ product }) => {
             ))}
           </select>
           <br />
+          <br />
         </React.Fragment>
       ))}
       <label htmlFor="quantity">Quantity </label>
+      <br />
       <input
         type="number"
         id="quantity"
@@ -129,6 +132,7 @@ const ProductForm = ({ product }) => {
         onChange={handleQuantityChange}
         value={quantity}
       />
+      <br />
       <br />
       <button
         type="submit"
