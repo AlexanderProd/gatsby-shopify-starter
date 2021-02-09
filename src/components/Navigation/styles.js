@@ -14,13 +14,13 @@ export const Container = styled.div`
   align-items: baseline;
   padding: 1.45rem;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 80%;
 `
 
 export const MenuLink = styled(Link)`
   color: white;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
 
   @media (max-width: ${breakpoints.s}px) {
