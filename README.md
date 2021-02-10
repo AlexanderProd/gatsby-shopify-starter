@@ -1,4 +1,11 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+site colors:
+#d0edd9
+#9ad3c2
+#ebd9c3
+#fffbf0
+#441d0c
+
 <h1 align="center">
   <img alt="Gatsby" src="resources/shopify+gatsby.png" height="60px" />
   <br/>

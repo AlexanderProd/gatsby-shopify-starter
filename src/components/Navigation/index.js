@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import reduce from 'lodash/reduce'
 import PropTypes from 'prop-types'
+import Logo from '../../images/cd-logo.jpg'
 
 import StoreContext from '~/context/StoreContext'
-import { CartCounter, Container, MenuLink, Wrapper } from './styles'
+import { CartCounter, Container, MenuLink, Wrapper, Bars, AppLogo, CartBtn, CartBtnLink } from './styles'
 
 const useQuantity = () => {
   const {
@@ -14,23 +15,35 @@ const useQuantity = () => {
   return [total !== 0, total]
 }
 
+const activeStyles = {
+  color: '#15cdfc'
+}
+
 const Navigation = ({ siteTitle }) => {
   const [hasItems, quantity] = useQuantity()
 
   return (
     <Wrapper>
+      <MenuLink to="/">
+        {/* <h1>Logo</h1> */}
+        <AppLogo src={Logo} alt={siteTitle} />
+      </MenuLink>
+
       <Container>
-        <MenuLink to="/">{siteTitle}</MenuLink>
-        <MenuLink to="/pre-order">Pre-Order</MenuLink>
-        <MenuLink to="/custom">Custom Orders</MenuLink>
-        <MenuLink to="/about">About</MenuLink>
-        <MenuLink to="/FAQ">F.A.Q.</MenuLink>
-        <MenuLink to="/cart">
-          {hasItems && <CartCounter>{quantity}</CartCounter>}
-          Cart
-        </MenuLink>
+        <MenuLink to="/pre-order" activeStyle={activeStyles}>Pre-Order</MenuLink>
+        <MenuLink to="/custom" activeStyle={activeStyles}>Custom Orders</MenuLink>
+        <MenuLink to="/about" activeStyle={activeStyles}>About</MenuLink>
+        <MenuLink to="/faq" activeStyle={activeStyles}>F.A.Q.</MenuLink>
       </Container>
-    </Wrapper>
+
+      <CartBtn>
+        <CartBtnLink to="/cart" activeStyle={activeStyles}>Cart</CartBtnLink>
+        {hasItems && <CartCounter>{quantity}</CartCounter>}
+      </CartBtn>
+
+      <Bars />
+
+    </Wrapper >
   )
 }
 

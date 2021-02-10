@@ -5,7 +5,7 @@ import { Global, css } from '@emotion/react'
 
 export const breakpoints = {
   s: 576,
-  m: 768,
+  m: 850,
   l: 992,
   xl: 1200,
 }
