@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Client from 'shopify-buy'
 
 import Context from '~/context/StoreContext'
@@ -22,7 +22,7 @@ const ContextProvider = ({ children }) => {
   }
 
   const [store, updateStore] = useState(initialStoreState)
-  let isRemoved = false
+  const isRemoved = useRef(false)
 
   useEffect(() => {
     const initializeCheckout = async () => {
@@ -49,7 +49,7 @@ const ContextProvider = ({ children }) => {
         try {
           const checkout = await fetchCheckout(existingCheckoutID)
           // Make sure this cart hasn’t already been purchased.
-          if (!isRemoved && !checkout.completedAt) {
+          if (!isRemoved.current && !checkout.completedAt) {
             setCheckoutInState(checkout)
             return
           }
@@ -59,7 +59,7 @@ const ContextProvider = ({ children }) => {
       }
 
       const newCheckout = await createNewCheckout()
-      if (!isRemoved) {
+      if (!isRemoved.current) {
         setCheckoutInState(newCheckout)
       }
     }
@@ -67,18 +67,15 @@ const ContextProvider = ({ children }) => {
     initializeCheckout()
   }, [store.client.checkout])
 
-  useEffect(
-    () => () => {
-      isRemoved = true
-    },
-    []
-  )
+  useEffect(() => () => {
+    isRemoved.current = true
+  })
 
   return (
     <Context.Provider
       value={{
         store,
-        addVariantToCart: (variantId, quantity) => {
+        addVariantToCart: async (variantId, quantity) => {
           if (variantId === '' || !quantity) {
             console.error('Both a size and quantity are required.')
             return

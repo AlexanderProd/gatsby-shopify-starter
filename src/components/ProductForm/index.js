@@ -35,7 +35,7 @@ const ProductForm = ({ product }) => {
         }
       })
     },
-    [client.product, productVariant.shopifyId, variants]
+    [client.product, productVariant.shopifyId]
   )
 
   useEffect(() => {
@@ -104,7 +104,7 @@ const ProductForm = ({ product }) => {
           <select
             name={name}
             key={id}
-            onChange={event => handleOptionChange(index, event)}
+            onBlur={event => handleOptionChange(index, event)}
           >
             {values.map(value => (
               <option
