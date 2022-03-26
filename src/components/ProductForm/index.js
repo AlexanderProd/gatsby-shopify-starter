@@ -30,9 +30,9 @@ const ProductForm = ({ product }) => {
         const result = fetchedProduct.variants.filter(
           variant => variant.id === productVariant.shopifyId
         )
-        if (result.length > 0) {
-          setAvailable(result[0].available)
-        }
+        setAvailable(
+          result[0]?.available ?? fetchedProduct.variants[0].available
+        )
       })
     },
     [client.product, productVariant.shopifyId]
