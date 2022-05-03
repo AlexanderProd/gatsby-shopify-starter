@@ -3,7 +3,7 @@ import reduce from 'lodash/reduce'
 import PropTypes from 'prop-types'
 
 import StoreContext from '~/context/StoreContext'
-import { CartCounter, Container, MenuLink, Wrapper } from './styles'
+import { CartCounter, Container, InfoBanner, MenuLink, Wrapper } from './styles'
 
 const useQuantity = () => {
   const {
@@ -18,15 +18,27 @@ const Navigation = ({ siteTitle }) => {
   const [hasItems, quantity] = useQuantity()
 
   return (
-    <Wrapper>
-      <Container>
-        <MenuLink to="/">{siteTitle}</MenuLink>
-        <MenuLink to="/cart">
-          {hasItems && <CartCounter>{quantity}</CartCounter>}
-          Cart 🛍
-        </MenuLink>
-      </Container>
-    </Wrapper>
+    <>
+      <InfoBanner>
+        Check out my open source Project{' '}
+        <a
+          href="https://github.com/AlexanderProd/jam-stack-box"
+          target="_blank"
+        >
+          JAMStackBox
+        </a>{' '}
+        to continuosly deploy Gatsby sites on your own.
+      </InfoBanner>
+      <Wrapper>
+        <Container>
+          <MenuLink to="/">{siteTitle}</MenuLink>
+          <MenuLink to="/cart">
+            {hasItems && <CartCounter>{quantity}</CartCounter>}
+            Cart 🛍
+          </MenuLink>
+        </Container>
+      </Wrapper>
+    </>
   )
 }
 

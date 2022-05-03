@@ -13,7 +13,7 @@ This starter also includes credentials to a Shopify demo store so you can try it
 
 If you have questions feel free to message me on [Twitter](https://twitter.com/alexanderhorl) 🤙🏻
 
-Checkout [nureineburg.netlify.app](https://nureineburg.netlify.app) for a real public shop built with this starter, the code is also [public](https://github.com/AlexanderProd/nureineburg.de/).  
+Checkout [nureineburg.alexanderhoerl.de](https://nureineburg.alexanderhoerl.de) for a real public shop built with this starter, the code is also [public](https://github.com/AlexanderProd/nureineburg.de/).
 
 ## 💎 Features
 
@@ -27,9 +27,11 @@ Checkout [nureineburg.netlify.app](https://nureineburg.netlify.app) for a real p
 - SEO
 
 ### 📦 Dynamic Inventory Checking
+
 The Shopify product inventory is being checked in realtime, therefore no rebuilding and redeploy is needed when a product goes out of stock. This avoids problems where products could still be available even though they're out of stock due to redeploy delay.
 
 ### 🖌 Styling
+
 I'm using [Emotion](https://emotion.sh/docs/introduction) as styled components library, but the starter is purposely only sparsely styled so you don't have to remove unecessary code but can instead add your own styling immediately.
 
 ## ⚠️ Common problems
@@ -65,12 +67,12 @@ I'm using [Emotion](https://emotion.sh/docs/introduction) as styled components l
 
     Open the `my-shopify-store` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-1. **Connect your own Shopify store.**
+1.  **Connect your own Shopify store.**
 
     Open both `.env` files located in the root directory of your page end replace the credentials with your own. Don't forget to restart Gatsby for your store to be loaded!
 
     ⚠️ Make sure to use the Shopify storefront API credentials, not the regular Shopify API!
-    
+
 ## Deploy
 
 Checkout my other open-source project [JAMStackBox](https://github.com/AlexanderProd/jam-stack-box) to continuously deploy your Gatsby site on your own server.
@@ -86,9 +88,10 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## 📌 ToDo
 
 I'll happily merge any pull request to improve the starter. 🙂
-- [X] Convert Layout to function component.
-- [X] Add dynamic inventory checking to avoid re-building after every purchase. 
-- [X] Add better styling.
-- [X] Add image optimization using Gatsby sharp plugin.
-- [X] Convert ProductForm to function component.
+
+- [x] Convert Layout to function component.
+- [x] Add dynamic inventory checking to avoid re-building after every purchase.
+- [x] Add better styling.
+- [x] Add image optimization using Gatsby sharp plugin.
+- [x] Convert ProductForm to function component.
 <!-- AUTO-GENERATED-CONTENT:END -->

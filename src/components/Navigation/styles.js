@@ -38,3 +38,29 @@ export const CartCounter = styled.span`
   margin: -10px;
   z-index: 20;
 `
+
+export const InfoBanner = styled.div`
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  background-color: #eb5ebf;
+  text-align: center;
+  color: white;
+
+  a {
+    color: white;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    & > :first-of-type {
+      margin-right: 0.5rem;
+    }
+  }
+`
