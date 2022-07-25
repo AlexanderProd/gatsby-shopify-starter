@@ -10,10 +10,11 @@ const ProductForm = ({ product }) => {
     options,
     variants,
     variants: [initialVariant],
-    priceRange: { minVariantPrice },
+    priceRangeV2: { minVariantPrice },
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
+  const [loading, setLoading] = useState(false)
   const {
     addVariantToCart,
     store: { client, adding },
@@ -24,23 +25,21 @@ const ProductForm = ({ product }) => {
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
   const checkAvailability = useCallback(
-    productId => {
-      client.product.fetch(productId).then(fetchedProduct => {
-        // this checks the currently selected variant for availability
-        const result = fetchedProduct.variants.filter(
-          variant => variant.id === productVariant.shopifyId
-        )
-        setAvailable(
-          result[0]?.available ?? fetchedProduct.variants[0].available
-        )
-      })
+    async productId => {
+      setLoading(true)
+      const fetchedProduct = await client.product.fetch(productId)
+      const result = fetchedProduct.variants.filter(
+        variant => variant.id === productVariant.shopifyId
+      )
+      setAvailable(result[0]?.available ?? fetchedProduct.variants[0].available)
+      setLoading(false)
     },
     [client.product, productVariant.shopifyId]
   )
 
   useEffect(() => {
     checkAvailability(product.shopifyId)
-  }, [productVariant, checkAvailability, product.shopifyId])
+  }, [checkAvailability, product.shopifyId])
 
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
@@ -62,8 +61,8 @@ const ProductForm = ({ product }) => {
     setVariant({ ...selectedVariant })
   }
 
-  const handleAddToCart = () => {
-    addVariantToCart(productVariant.shopifyId, quantity)
+  const handleAddToCart = async () => {
+    await addVariantToCart(productVariant.shopifyId, quantity)
   }
 
   /* 

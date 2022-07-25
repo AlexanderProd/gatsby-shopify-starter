@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
@@ -14,6 +15,8 @@ import { ProductTitle, ProductDescription } from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
+
+  console.log(product.images)
   return (
     <>
       <SEO title={product.title} description={product.description} />
@@ -21,10 +24,10 @@ const ProductPage = ({ data }) => {
         <TwoColumnGrid>
           <GridLeft>
             {product.images.map(image => (
-              <Img
-                fluid={image.localFile.childImageSharp.fluid}
+              <GatsbyImage
                 key={image.id}
-                alt={product.title}
+                image={image.localFile.childImageSharp.gatsbyImageData}
+                alt="Produktfoto Karl"
               />
             ))}
           </GridLeft>
@@ -61,13 +64,13 @@ export const query = graphql`
         title
         price
         availableForSale
-        shopifyId
+        shopifyId: storefrontId
         selectedOptions {
           name
           value
         }
       }
-      priceRange {
+      priceRangeV2 {
         minVariantPrice {
           amount
           currencyCode
@@ -82,9 +85,11 @@ export const query = graphql`
         id
         localFile {
           childImageSharp {
-            fluid(maxWidth: 910) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
+            gatsbyImageData(
+              width: 910
+              placeholder: TRACED_SVG
+              layout: CONSTRAINED
+            )
           }
         }
       }
