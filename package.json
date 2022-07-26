@@ -12,7 +12,6 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "gatsby": "^4.19.2",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-analytics": "^4.19.0",
     "gatsby-plugin-image": "^2.19.0",
     "gatsby-plugin-layout": "^3.19.0",
@@ -26,14 +25,14 @@
     "gatsby-transformer-sharp": "^4.19.0",
     "isomorphic-fetch": "^3.0.0",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "querystringify": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "set-value": "^4.1.0",
-    "shopify-buy": "2.14.0"
+    "shopify-buy": "2.16.1"
   },
   "keywords": [
     "gatsby",
@@ -47,6 +46,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "start": "npm run dev",
+    "clean": "gatsby clean",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

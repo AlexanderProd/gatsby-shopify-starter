@@ -4,13 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
-import {
-  Img,
-  Container,
-  TwoColumnGrid,
-  GridLeft,
-  GridRight,
-} from '~/utils/styles'
+import { Container, TwoColumnGrid, GridLeft, GridRight } from '~/utils/styles'
 import { ProductTitle, ProductDescription } from './styles'
 
 const ProductPage = ({ data }) => {

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import StoreContext from '~/context/StoreContext'
 import { Grid, Product, Title, PriceTag } from './styles'
-import { Img } from '~/utils/styles'
 
 const ProductGrid = () => {
   const {
@@ -22,11 +22,19 @@ const ProductGrid = () => {
               images {
                 id
                 originalSrc
+                altText
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 910) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                    }
+                    gatsbyImageData(layout: FULL_WIDTH)
+                  }
+                }
+              }
+              featuredImage {
+                altText
+                id
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(layout: FULL_WIDTH)
                   }
                 }
               }
@@ -56,16 +64,20 @@ const ProductGrid = () => {
               id,
               handle,
               title,
-              images: [firstImage],
+              featuredImage,
               variants: [firstVariant],
             },
           }) => (
             <Product key={id}>
               <Link to={`/product/${handle}/`}>
-                {firstImage && firstImage.localFile && (
-                  <Img
-                    fluid={firstImage.localFile.childImageSharp.fluid}
-                    alt={handle}
+                {featuredImage && (
+                  <GatsbyImage
+                    key={featuredImage.id}
+                    image={
+                      featuredImage.localFile.childImageSharp.gatsbyImageData
+                    }
+                    alt={featuredImage.altText}
+                    style={{ height: '100%' }}
                   />
                 )}
               </Link>

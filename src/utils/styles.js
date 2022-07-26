@@ -1,7 +1,7 @@
 import React from 'react'
-import Image from 'gatsby-image'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const breakpoints = {
   s: 576,
@@ -26,7 +26,7 @@ export const GlobalStyle = props => (
   />
 )
 
-export const Img = styled(Image)`
+export const Img = styled(GatsbyImage)`
   max-width: 100 %;
   margin-left: 0;
   margin-right: 0;
