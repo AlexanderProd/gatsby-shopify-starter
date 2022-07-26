@@ -131,7 +131,7 @@ const ProductForm = ({ product }) => {
       <br />
       <button
         type="submit"
-        disabled={!available || adding || loading}
+        disabled={!available || adding}
         onClick={handleAddToCart}
       >
         Add to Cart
