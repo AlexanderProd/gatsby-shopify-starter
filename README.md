@@ -11,6 +11,8 @@ Kick off your next eCommerce experience with this Gatsby starter. It is based on
 
 This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of `.env`.
 
+To obtain your own credentials you need the create a custom app in the Shopify frontend and enable the Storefront as well as the Admin API.
+
 If you have questions feel free to message me on [Twitter](https://twitter.com/alexanderhorl) 🤙🏻
 
 Checkout [nureineburg.alexanderhoerl.de](https://nureineburg.alexanderhoerl.de) for a real public shop built with this starter, the code is also [public](https://github.com/AlexanderProd/nureineburg.de/).
