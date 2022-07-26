@@ -24,6 +24,7 @@ const Navigation = ({ siteTitle }) => {
         <a
           href="https://github.com/AlexanderProd/jam-stack-box"
           target="_blank"
+          rel="noreferrer"
         >
           JAMStackBox
         </a>{' '}

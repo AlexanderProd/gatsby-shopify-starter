@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import SEO from '~/components/seo'
+import Seo from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
 import { Container, TwoColumnGrid, GridLeft, GridRight } from '~/utils/styles'
 import { ProductTitle, ProductDescription } from './styles'
@@ -13,7 +13,7 @@ const ProductPage = ({ data }) => {
   console.log(product.images)
   return (
     <>
-      <SEO title={product.title} description={product.description} />
+      <Seo title={product.title} description={product.description} />
       <Container>
         <TwoColumnGrid>
           <GridLeft>
