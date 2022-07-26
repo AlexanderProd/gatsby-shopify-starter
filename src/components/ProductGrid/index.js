@@ -76,7 +76,7 @@ const ProductGrid = () => {
                     image={
                       featuredImage.localFile.childImageSharp.gatsbyImageData
                     }
-                    alt={featuredImage.altText}
+                    alt={featuredImage.altText || handle}
                     style={{ height: '100%' }}
                   />
                 )}

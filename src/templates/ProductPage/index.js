@@ -10,7 +10,6 @@ import { ProductTitle, ProductDescription } from './styles'
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
 
-  console.log(product.images)
   return (
     <>
       <Seo title={product.title} description={product.description} />
@@ -21,7 +20,7 @@ const ProductPage = ({ data }) => {
               <GatsbyImage
                 key={image.id}
                 image={image.localFile.childImageSharp.gatsbyImageData}
-                alt="Produktfoto Karl"
+                alt={image.altText || product.title}
               />
             ))}
           </GridLeft>
