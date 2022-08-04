@@ -9,7 +9,7 @@
 
 Kick off your next eCommerce experience with this Gatsby starter. It is based on the default Gatsby starter to be easily modifiable. [Demo](https://gatsby-shopify-starter.alexanderhoerl.de)
 
-This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of `.env`.
+Unfortunately Shopify prohibits to share access tokens in public repositories, therefore you have to to create your own Shopify Shop and put those credentials in the `template.env` file and rename it to `.env.development` as well as `.env.production`. There are two files if you want to use a different store for you development.
 
 To obtain your own credentials you need the create a custom app in the Shopify frontend and enable the Storefront as well as the Admin API.
 
